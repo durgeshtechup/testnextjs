@@ -12,7 +12,7 @@ const nextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
   assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
   reactStrictMode: true,
-  distDir:"next/build",
+  // distDir:"next/build",
   images: {
     domains: [
       'images.unsplash.com',
@@ -30,7 +30,7 @@ const nextConfig = {
     // REACT_APP_API_BASE_URL: 'https://backend.bm2bank.com',
     // REACT_APP_API_BASE_URL: 'https://backend-dev.lightningchecks.com',
     // REACT_APP_API_BASE_URL: 'https://backend.lightningchecks.com',
-    NETLIFY_NEXT_PLUGIN_SKIP:true
+    // NETLIFY_NEXT_PLUGIN_SKIP:true
   },
 };
 
