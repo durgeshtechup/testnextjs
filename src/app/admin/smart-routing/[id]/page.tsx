@@ -568,7 +568,7 @@ const ConditionJson = ({
                 condition_obj?.condition_type === "AND") && (
                 <>
                   {condition_obj?.conditions?.map((ele: any, index: number) => (
-                    <div className="flex items-center gap-3 text-blue-500">
+                    <div key={index} className="flex items-center gap-3 text-blue-500">
                       <ConditionRender
                         condition_obj={condition_obj}
                         handleNodeUpdate={handleNodeUpdate}
@@ -786,17 +786,18 @@ const ActionJson = ({
           }
           value={action_obj?.type}
         >
-          {rootOption.map((data: any) => {
-            return <option value={data?.value}>{data?.name}</option>;
+          {rootOption.map((data: any,index:any) => {
+            return <option key={index} value={data?.value}>{data?.name}</option>;
           })}
         </select>
         <div className="flex w-fit items-center gap-3 rounded-xl border-2 border-amber-200 bg-amber-50 pl-5">
           <strong>{action_obj?.action?.name}</strong>
           <p>with gateway</p>
           {/* {console.log("line 746", action_obj?.action)} */}
-          {action_obj?.action?.arguments.map((data: any) => {
+          {action_obj?.action?.arguments.map((data: any,index:any) => {
             return (
               <select
+              key={index}
                 name="org_id"
                 id="org_id"
                 value={data?.value}
@@ -818,8 +819,8 @@ const ActionJson = ({
                   handleNodeUpdate(id ? id : action_obj.id, objKey, newObj);
                 }}
               >
-                {gatewayOption.map((data: any) => {
-                  return <option value={data?.value}>{data?.name}</option>;
+                {gatewayOption.map((data: any, index:any) => {
+                  return <option key={index} value={data?.value}>{data?.name}</option>;
                 })}
               </select>
             );
@@ -889,8 +890,8 @@ const NoEffectJson = ({
           value={"NO_EFFECT"}
         >
           <option value={"NO_EFFECT"}>NO EFFECT</option>
-          {rootOption.map((data: any) => {
-            return <option value={data?.value}>{data?.name}</option>;
+          {rootOption.map((data: any,index:any) => {
+            return <option key={index} value={data?.value}>{data?.name}</option>;
           })}
         </select>
       </div>
@@ -929,8 +930,8 @@ const ConditionJoinRender = ({
           }
           value={condition_obj?.condition_type}
         >
-          {ConditionTypes.map((data: any) => {
-            return <option value={data?.value}>{data?.name}</option>;
+          {ConditionTypes.map((data: any,index:any) => {
+            return <option key={index} value={data?.value}>{data?.name}</option>;
           })}
         </select>
       )}
@@ -1098,8 +1099,8 @@ const ConditionRender = ({
           handleNodeUpdate(condition_obj?.id, "conditions", getNewObj(left));
         }}
       >
-        {LeftConditionOperands.map((data: any) => {
-          return <option value={data?.value}>{data?.name}</option>;
+        {LeftConditionOperands.map((data: any,index:any) => {
+          return <option key={index} value={data?.value}>{data?.name}</option>;
         })}
       </select>
       <select
@@ -1115,7 +1116,7 @@ const ConditionRender = ({
       >
         {conditionOperator?.map((data: any, index) => {
           return (
-            <option value={data?.value} key={index}>
+            <option key={index} value={data?.value} key={index}>
               {data?.name}
             </option>
           );
@@ -1217,7 +1218,7 @@ const ConditionRender = ({
               >
                 {rightDropdown?.map((data: any, index) => {
                   return (
-                    <option value={data.code || data.value} key={index}>
+                    <option key={index} value={data.code || data.value} key={index}>
                       {data?.name}
                     </option>
                   );

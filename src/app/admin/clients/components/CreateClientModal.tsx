@@ -378,6 +378,7 @@ const CreateClientModal = ({
                     {organizations.map((data, index) => {
                       return (
                         <option
+                        key={index}
                           disabled={viewMode}
                           value={data.id}
                           id={index.toString()}

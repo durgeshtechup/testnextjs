@@ -61,9 +61,10 @@ const GatewayPricing = ({
             className="mt-1 flex h-10 w-full items-center justify-center rounded-xl border  bg-white/0 p-2 text-sm text-gray-700 outline-none dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]"
           >
             <option value="">Select {type}</option>
-            {priceOptions?.map((data: any) => {
+            {priceOptions?.map((data: any,index:any) => {
               return (
                 <option
+                key={index}
                   value={data?.value}
                 >{`${data?.label}`}</option>
               );
