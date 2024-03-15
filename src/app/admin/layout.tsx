@@ -26,6 +26,8 @@ export default function Admin({ children }: { children: React.ReactNode }) {
   const { mini, theme, setTheme, setMini } = context;
   return (
     <div className="flex h-full w-full bg-background-100 dark:bg-background-900 ">
+       
+      
       <Sidebar
         routes={routes}
         open={open}

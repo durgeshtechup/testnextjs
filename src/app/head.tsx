@@ -13,8 +13,8 @@ export default function RootHead() {
 
  {/* <title>Lightning Checks</title>  */}
 
-    {/* <title>bm2Bank</title> */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
+
 	</>
 }
