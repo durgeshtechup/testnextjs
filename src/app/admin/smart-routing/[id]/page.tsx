@@ -1116,7 +1116,7 @@ const ConditionRender = ({
       >
         {conditionOperator?.map((data: any, index) => {
           return (
-            <option key={index} value={data?.value} key={index}>
+            <option  value={data?.value} key={index}>
               {data?.name}
             </option>
           );
