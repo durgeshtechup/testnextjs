@@ -1218,7 +1218,7 @@ const ConditionRender = ({
               >
                 {rightDropdown?.map((data: any, index) => {
                   return (
-                    <option key={index} value={data.code || data.value} key={index}>
+                    <option  value={data.code || data.value} key={index}>
                       {data?.name}
                     </option>
                   );
