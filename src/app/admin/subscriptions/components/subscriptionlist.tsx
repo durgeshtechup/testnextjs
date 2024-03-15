@@ -335,7 +335,7 @@ function SubscriptionList(props: {
 
 
 
-      <Card extra={"w-full h-full sm:overflow-auto px-6 mb-6"}>
+      <Card extra={"w-full h-full sm:overflow-auto px-6 mb-6 border"}>
         {/* <header className="relative flex items-center justify-between pt-5"> */}
         <header className="relative flex items-center justify-between pt-5 flex-wrap">
           <div className="lg:flex md:flex block w-full justify-between gap-5">

@@ -67,7 +67,7 @@ const Navbar = (props: {
   };
   return (
     <nav
-      className={`duration-175 linear fixed right-3 top-3 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/30 transition-all ${
+      className={`duration-175 linear shadow fixed right-3 top-3 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/30 transition-all ${
         mini === false
           ? 'w-[calc(100vw_-_6%)] md:w-[calc(100vw_-_8%)] lg:w-[calc(100vw_-_6%)] xl:w-[calc(100vw_-_350px)] 2xl:w-[calc(100vw_-_365px)]'
           : mini === true && hovered === true
@@ -107,7 +107,7 @@ const Navbar = (props: {
 
       {/* <div className="relative mt-[3px] flex h-[61px] w-[355px] flex-grow items-center justify-around gap-2 rounded-full bg-white px-2 py-2 shadow-xl shadow-shadow-500 dark:!bg-navy-800 dark:shadow-none md:w-[365px] md:flex-grow-0 md:gap-1 xl:w-[365px] xl:gap-2"> */}
       {/* <div className="relative mt-[3px] flex h-[61px]  flex-grow items-center justify-around gap-2 rounded-full bg-white px-2 py-2 shadow-xl shadow-shadow-500 dark:!bg-navy-800 dark:shadow-none  md:flex-grow-0 md:gap-1  xl:gap-2"> */}
-      <div className="relative flex place-content-start items-center justify-around gap-2 rounded-full bg-white px-2 py-2 shadow-xl shadow-shadow-500 dark:!bg-navy-800 dark:shadow-none md:w-fit md:flex-grow-0 md:gap-1 xl:w-fit xl:gap-3" style={{ margin: "0px 10px" }}>
+      <div className="relative flex place-content-start items-center justify-around gap-2 rounded-full bg-white px-2 py-2  dark:!bg-navy-800 dark:shadow-none md:w-fit md:flex-grow-0 md:gap-1 xl:w-fit xl:gap-3 border" style={{ margin: "0px 10px" }}>
      
         {/* <div className="flex h-full items-center rounded-full bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
           <p className="pl-3 pr-2 text-xl">

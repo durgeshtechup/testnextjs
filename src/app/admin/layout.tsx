@@ -39,7 +39,7 @@ export default function Admin({ children }: { children: React.ReactNode }) {
       <div className="h-full w-full font-dm dark:bg-navy-900">
         {/* Main Content */}
         <main
-          className={`mx-2.5 flex-none transition-all dark:bg-navy-900 md:pr-2 ${
+          className={`mx-2.5   flex-none transition-all dark:bg-navy-900 md:pr-2  ${
             mini === false
               ? 'xl:ml-[313px]'
               : mini === true && hovered === true
@@ -48,7 +48,7 @@ export default function Admin({ children }: { children: React.ReactNode }) {
           } `}
         >
           {/* Routes */}
-          <div>
+          <>
             <Portal>
               <Navbar
                 onOpenSidenav={() => setOpen(!open)}
@@ -61,13 +61,13 @@ export default function Admin({ children }: { children: React.ReactNode }) {
                 setMini={setMini}
               />
             </Portal>
-            <div className="mx-auto min-h-screen p-2 !pt-[100px] md:p-2 ">
+            <div className="mx-auto min-h-screen p-2 !pt-[100px] md:p-2">
               {children}
             </div>
             <div className="p-3">
               {/* <Footer /> */}
             </div>
-          </div>
+          </>
         </main>
       </div>
     </div>
