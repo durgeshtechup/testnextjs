@@ -57,11 +57,14 @@ import { CiCircleMinus } from "react-icons/ci";
 import Checkbox from "components/checkbox";
 // import { Dropdown } from 'primereact/dropdown';
 // import 'primereact/resources/themes/lara-light-cyan/theme.css';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { getProfile } from "api/users";
 // import Select from 'react-dropdown-select';
 import { Select as AntSelect } from 'antd';
 import Image from "next/image";
+import Link from "next/link";
+
+
 
 interface iGateway {
   client_id?: string;
@@ -5046,7 +5049,7 @@ const CreateClientGatewaysModal = ({
                 <p className="opacity-50">To see the wallet address please verify 2FA code.</p>
                 <br />
 
-                <p className="">Your account does not meet the necessary requirements in order to see wallet address, please visit <Link to="/admin/profile">profile settings</Link> and activate 2FA code.</p>
+                <p className="">Your account does not meet the necessary requirements in order to see wallet address, please visit <Link href="/admin/profile">profile settings</Link> and activate 2FA code.</p>
                 <div className="flex gap-2  mt-3 justify-end">
                   <button
                     onClick={onCloseWalletAddress}

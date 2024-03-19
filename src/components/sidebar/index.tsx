@@ -20,6 +20,7 @@ import Image from 'next/image';
 
 // import mainlogo from '../../assets/img/mainlogo.png'
 import mainlogo from '/public/img/assets/img/Logo-2.png'
+import Link from 'next/link';
 
 function SidebarHorizon(props: { routes: IRoute[]; [x: string]: any }) {
   const { routes, open, setOpen, variant } = props;
@@ -122,6 +123,21 @@ function SidebarHorizon(props: { routes: IRoute[]; [x: string]: any }) {
               {/* Nav item */}
               <ul>
                 <Links mini={mini} hovered={hovered} routes={routes} />
+               {/* {
+                routes?.map((m:any)=>{
+                  return<li>
+                   <Link  href={m?.layout+ m?.path} >
+                  <button>
+                   
+{m?.name}
+                    
+
+                  </button>
+                  </Link>
+
+                  </li>
+                })
+               } */}
               </ul>
             </div>
             {/* Free Horizon Card    */}

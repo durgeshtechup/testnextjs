@@ -13,6 +13,7 @@ import { IRoute } from 'types/navigation';
 import NavLink from 'components/link/NavLink';
 import { useCallback } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
   //  Chakra color mode
@@ -209,7 +210,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
         );
       } else {
         return (
-          <NavLink href={route.layout + route.path} key={key}>
+          <Link href={route.layout + route.path} key={key}>
             {route.icon ? (
               <div className="relative mb-3 flex hover:cursor-pointer">
                 <li className="my-[3px] flex cursor-pointer items-center px-[30px]">
@@ -272,7 +273,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
                 </li>
               </div>
             )}
-          </NavLink>
+          </Link>
         );
       }
     });
@@ -285,7 +286,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
         route.layout === '/rtl'
       ) {
         return (
-          <NavLink key={index} href={route.layout + route.path}>
+          <Link key={index} href={route.layout + route.path}>
             <div
               className={`relative ${
                 mini === false
@@ -317,7 +318,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
                 </span>
               </li>
             </div>
-          </NavLink>
+          </Link>
         );
       }
     });
