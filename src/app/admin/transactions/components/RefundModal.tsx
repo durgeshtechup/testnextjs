@@ -52,6 +52,7 @@ const RefundModal = ({
       });
   }
 
+
   return (
 
     <>
@@ -71,7 +72,8 @@ const RefundModal = ({
               info?.status === "CREATED" ||
               info?.status === "AUTHORIZED" ||
               info?.status === "CANCELLED" ||
-              info?.status === "PENDING"
+              info?.status === "PENDING" ||
+              !enRefund
 
             )
           )

@@ -99,6 +99,12 @@ const StatusRender = ({
           <p className="pl-0 pr-1 py-1 lowercase first-letter:capitalize bg-red-100 dark:bg-red-50 rounded-lg"><span className="text-center px-2 text-red-500 uppercase">{value}</span></p>
         </>
       )}
+      {status === "FAILED" && (
+        <>
+          <MdCancel className="h-5 w-5 text-red-500" />
+          <p className="pl-0 pr-1 py-1 lowercase first-letter:capitalize bg-red-100 dark:bg-red-50 rounded-lg"><span className="text-center px-2 text-red-500 uppercase">{value}</span></p>
+        </>
+      )}
       {status === "REFUND DECLINED" && (
         <>
           <MdOutlineReplayCircleFilled className="h-5 w-5 text-red-500" />

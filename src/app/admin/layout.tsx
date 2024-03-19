@@ -1,6 +1,6 @@
 'use client';
 // Layout components
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 import { ConfiguratorContext } from 'contexts/ConfiguratorContext';
 import routes from 'routes';
@@ -14,6 +14,7 @@ import { Portal } from '@chakra-ui/portal';
 import Navbar from 'components/navbar';
 import Sidebar from 'components/sidebar';
 import Footer from 'components/footer/Footer';
+import { getToken } from 'utils/auth';
 
 export default function Admin({ children }: { children: React.ReactNode }) {
   // states and functions
@@ -24,6 +25,13 @@ export default function Admin({ children }: { children: React.ReactNode }) {
   if (isWindowAvailable()) document.documentElement.dir = 'ltr';
   const context = useContext(ConfiguratorContext);
   const { mini, theme, setTheme, setMini } = context;
+  const router =useRouter()
+
+  const userToken=getToken()
+
+  if(!userToken){
+router.replace("/auth/sign-in")
+  }
   return (
     <div className="flex h-full w-full bg-background-100 dark:bg-background-900 ">
        

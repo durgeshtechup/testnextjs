@@ -5,10 +5,14 @@ import AppWrappers from './AppWrappers';
 import { Toaster } from 'react-hot-toast';
 import { ClientProvider } from 'clientProvider';
 import Head from 'next/head';
+import { getToken } from 'utils/auth';
+import { useRouter } from 'next/navigation';
 // import '@asseinfo/react-kanban/dist/styles.css';
 // import '/public/styles/Plugins.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+
+  
   return (
     <html lang="en">
    

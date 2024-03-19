@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState, useContext } from "react";
 import toast from "react-hot-toast";
-// import PaymentTable from "./components/PaymentsList";
+import PaymentTable from "./components/PaymentsList";
 import { getAllPayments, getPaymentsFilter, getCardType, getSearchPayments } from "api/payments";
 import { getAllClients } from "api/clients";
 import { ClientContext } from "clientProvider";
@@ -326,7 +326,7 @@ const Transactions = () => {
 
     <>
       <div className="mt-5 pt-5">
-        {/* <PaymentTable
+        <PaymentTable
           pageSize={pageSize}
           setPageSize={setPageSize}
           tableData={payments}
@@ -347,7 +347,7 @@ const Transactions = () => {
           filter={filter}
           setFilter={setFilter}
           onValueChange={serchboxValueChange}
-        /> */}
+        />
       </div>
     </>
   );

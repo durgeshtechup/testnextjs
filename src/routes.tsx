@@ -10,7 +10,9 @@ import {
   MdPayments,
   MdPeople,
   MdPerson,
+  MdToken,
 } from 'react-icons/md';
+import { RxTokens } from "react-icons/rx";
 
 // Admin Imports
 
@@ -112,6 +114,16 @@ const routes = [
     layout: '/admin',
     path: '/transactions',
     icon: <MdPayments className="text-inherit h-5 w-5" />,
+    collapse: false,
+    items:[]
+
+  },
+//Tokens
+  {
+    name: 'Tokens',
+    layout: '/admin',
+    path: '/tokens',
+    icon: <RxTokens className="text-inherit h-5 w-5" />,
     collapse: false,
     items:[]
 

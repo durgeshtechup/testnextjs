@@ -34,7 +34,7 @@ function SignInDefault() {
   const userToken=getToken()
 
   if(userToken){
-router.push("/admin/dashboard")
+router.replace("/admin/dashboard")
   }
 
   function handlePasswordChange(e: any) {
@@ -70,7 +70,7 @@ router.push("/admin/dashboard")
               getLoginData(data);
               setStatus("OTP");
             } else {
-              router.push('/admin/dashboard')
+              router.replace('/admin/dashboard')
               setToken(data.auth_token);
             }
           })

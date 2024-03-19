@@ -1,10 +1,8 @@
-"use-client"
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalOverlay } from "@chakra-ui/modal";
 import { getGateways, getTimeZone, refundPayment } from "api/payments";
 import Card from "components/card";
 import DivLoader from "components/divloader/DivLoader";
-import DateRange from "components/fields/DateRange";
 import React, { useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { FaChevronDown } from "react-icons/fa";
@@ -15,7 +13,9 @@ import { convertToFloat } from "utils/formatNumber";
 import { useOnClickOutsideSingel } from "utils/useOnClickOutside";
 // import { GatewayTypes } from "views/admin/clients/components/CreateClientGatewaysModal";
 // import TripleToggleSwitch from "./TripleToggleSwitch";
-// import DateRange from "../../../../components/fields/DateRange";
+import DateRange from "components/fields/DateRange";
+import { CiFilter } from "react-icons/ci";
+
 const FilterModal = ({
   clients,
   allGateways,
@@ -311,14 +311,15 @@ const FilterModal = ({
 
   return (
     <>
-      <button
-        className="rounded-full bg-indigo-600 my-1 md:my-3 px-3 py-2 text-white hover:bg-indigo-500"
-        onClick={() => {
-          onOpen();
-        }}
-      >
-        Apply Filter
-      </button>
+    <button
+                // className="rounded-full bg-indigo-600 my-1 md:my-3 px-3 py-2 text-white hover:bg-indigo-500"
+                className="rounded-full border my-1 md:my-3 px-3 py-2 text-gray-900 hover:text-white font-bold hover:bg-indigo-500"
+                onClick={() => {
+                    onOpen();
+                }}
+            >
+               <CiFilter className="text-lg" />
+            </button>
 
       {/* <TripleToggleSwitch labels={labels} onChange={onChange} /> */}
 
@@ -660,11 +661,10 @@ const FilterModal = ({
                     className="mt-1 flex h-10 w-full items-center justify-center rounded-xl border  bg-white/0 p-2 text-sm text-gray-700 outline-none dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]"
                   >
                     <option value="">Select TimeZone</option>
-                    {timeZone?.map((data: any,index:number) => {
+                    {timeZone?.map((data: any) => {
                       return (
                         <option
                           value={data?.label}
-                          key={index}
                         >{`${data?.label}(${data?.value})`}</option>
                       );
                     })}
