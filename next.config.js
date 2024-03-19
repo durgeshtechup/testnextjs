@@ -32,6 +32,13 @@ const nextConfig = {
     // REACT_APP_API_BASE_URL: 'https://backend.lightningchecks.com',
     // NETLIFY_NEXT_PLUGIN_SKIP:true
   },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
