@@ -185,8 +185,8 @@ const ChangeStatusModal = ({
                                             "HELD",
                                             "DUPLICATE"
 
-                                        ].map((status) => {
-                                            return <option value={status} >
+                                        ].map((status:any,index:any) => {
+                                            return <option key={index} value={status} >
                                                 {status}
                                             </option>
                                         })}
@@ -223,8 +223,9 @@ const ChangeStatusModal = ({
                                             "ALERTED",
                                             "HELD",
                                             "DUPLICATE"
-                                        ].map((status) => {
+                                        ].map((status:any,index:any) => {
                                             return <option
+                                            key={index}
                                                 value={status}
                                                 disabled={info?.status == status}
                                             >
