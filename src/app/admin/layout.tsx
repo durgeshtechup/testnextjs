@@ -1,7 +1,7 @@
 'use client';
 // Layout components
 import { usePathname, useRouter } from 'next/navigation';
-import { useContext, useState } from 'react';
+import { Suspense, useContext, useState } from 'react';
 import { ConfiguratorContext } from 'contexts/ConfiguratorContext';
 import routes from 'routes';
 import {
@@ -15,6 +15,7 @@ import Navbar from 'components/navbar';
 import Sidebar from 'components/sidebar';
 import Footer from 'components/footer/Footer';
 import { getToken } from 'utils/auth';
+import Loading from './loading';
 
 export default function Admin({ children }: { children: React.ReactNode }) {
   // states and functions
@@ -72,7 +73,10 @@ router.replace("/auth/sign-in")
               />
             </Portal>
             <div className="mx-auto min-h-screen p-2 !pt-[100px] md:p-2">
+              <Suspense fallback={<Loading/>} >
               {children}
+
+              </Suspense>
             </div>
             <div className="p-3">
               {/* <Footer /> */}

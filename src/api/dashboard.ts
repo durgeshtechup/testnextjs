@@ -1,6 +1,6 @@
 import authRequest from "../utils/authRequest";
 
-export const getAllTabs = (type: string, params: any): Promise<any> => {
+export const getAllTabs = (type: boolean, params: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     // alert(type)
     authRequest({
@@ -17,7 +17,7 @@ export const getAllTabs = (type: string, params: any): Promise<any> => {
   });
 };
 
-export const getTransactionByGateway = (type: string, live: string, params: any): Promise<any> => {
+export const getTransactionByGateway = (type: string, live: boolean, params: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     authRequest({
       url: "/api/v1/dashboard/gateways/" + type + "?is_live=" + live,
@@ -32,7 +32,7 @@ export const getTransactionByGateway = (type: string, live: string, params: any)
       });
   });
 };
-export const getTransactionByAnalysis = (type: string, live: string, params: any): Promise<any> => {
+export const getTransactionByAnalysis = (type: string, live: boolean, params: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     authRequest({
       url: "/api/v1/dashboard/approval-percent" + "?is_live=" + live,
@@ -52,7 +52,7 @@ export const getTransactionByAnalysis = (type: string, live: string, params: any
 export const getTransactionByCurrency = (
   type: string,
   params: any,
-  live: string
+  live: boolean
 ): Promise<any> => {
   return new Promise((resolve, reject) => {
     authRequest({
@@ -69,7 +69,7 @@ export const getTransactionByCurrency = (
   });
 };
 
-export const getWawechratData = (params: any, type: string): Promise<any> => {
+export const getWawechratData = (params: any, type: boolean): Promise<any> => {
   return new Promise((resolve, reject) => {
     authRequest({
       url: "/api/v1/dashboard/wavechart?is_live=" + type,

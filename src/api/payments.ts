@@ -4,7 +4,7 @@ import authRequest from "../utils/authRequest";
 export const getRecentPayments = (
   page: number,
   curretClient: string,
-  type: string,
+  type: boolean,
   pageSize: number = 10,
   params: any
 ): Promise<any> => {

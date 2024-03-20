@@ -19,14 +19,17 @@ import {
   MdTimer,
 } from "react-icons/md";
 import { convertToFloat } from "utils/formatNumber";
-import { GatewayTypes } from "views/admin/clients/components/CreateClientGatewaysModal";
-import { PaymentRowObj } from "..";
+// import { GatewayTypes } from "views/admin/clients/components/CreateClientGatewaysModal";
+import { PaymentRowObj } from "../page";
 import InfoModal from "./InfoModal";
 import RefundModal from "./RefundModal";
 //import { StatusRender } from "./PaymentsList";
 import StatusRender from "./StatusRender";
 import ShortTruncateCopy from "components/common/ShortTruncateCopy";
 import { getImage } from "utils/commonFunction";
+import Image from "next/image";
+import { GatewayTypes } from "app/admin/clients/components/CreateClientGatewaysModal";
+import Link from "next/link";
 
 function PaymentsListDashboard(props: {
   tableData: any;
@@ -93,7 +96,7 @@ function PaymentsListDashboard(props: {
                   ) : (
 
                     <span className="flex items-center ">
-                      <img
+                      <Image
                         style={{ height: "auto", width: "15px" }}
                         className="h-auto w-20"
                         src={getImage(info?.cell?.row?.original?.gateway_name)}
@@ -173,12 +176,12 @@ function PaymentsListDashboard(props: {
         <div className="text-xl font-bold text-navy-700 dark:text-white">
           Recent Transactions
         </div>
-        <a
-          href="/admin/payments"
+        <Link
+          href="/admin/transactions"
           className="linear ml-auto mt-[5px] rounded-full bg-brand-500 px-4 py-2 text-base font-medium text-white hover:text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
         >
           View More
-        </a>
+        </Link>
 
       </header>
 

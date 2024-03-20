@@ -12,6 +12,7 @@ import {
   IoMdInformationCircleOutline,
 } from 'react-icons/io';
 import avatar from '/public/img/avatars/avatar4.png';
+import Link from 'next/link';
 
 const Navbar = (props: { brandText: string; [x: string]: any }) => {
   const { onOpenSidenav, brandText, mini, hovered } = props;
@@ -207,12 +208,12 @@ const Navbar = (props: { brandText: string; [x: string]: any }) => {
             <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
 
             <div className="ml-4 mt-3 flex flex-col">
-              <a
-                href=" "
+              <Link
+                href="/admin/profile"
                 className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
               >
                 Profile Settings
-              </a>
+              </Link>
               <a
                 href=" "
                 className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"

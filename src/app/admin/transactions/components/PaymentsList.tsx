@@ -1011,7 +1011,7 @@ console.log("MasterCard",MasterCard)
       <header className="relative flex items-center justify-between pt-5 flex-wrap">
         <div className="lg:flex md:flex block w-full justify-between gap-5">
           <div className="flex items-center gap-5">
-            <div className="text-xl font-bold text-navy-700 dark:text-white">
+            <div className="text-xl font-normal text-navy-700 dark:text-white">
           <Searchbox onSearch={handleValueChange} />
              
             </div>

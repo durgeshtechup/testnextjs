@@ -5037,7 +5037,7 @@ const CreateClientGatewaysModal = ({
       </Modal >
 
       <Modal isOpen={isOpenWalletAddress} onClose={onCloseWalletAddress}>
-        <ModalOverlay className="bg-[#000]   !opacity-30 z-20" />
+        <ModalOverlay className="bg-[#000]   !opacity-30" />
         <ModalContent className="!z-[1002] !m-auto   shadow !w-max min-w-[350px] !max-w-[85%] md:top-[12vh] ">
 
           <ModalBody className="">

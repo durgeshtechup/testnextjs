@@ -10,12 +10,13 @@ import 'styles/index.css';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { ConfiguratorContext } from 'contexts/ConfiguratorContext';
+import Loading from './admin/loading';
 
 const _NoSSR = ({ children }) => <React.Fragment>{children}</React.Fragment>;
 
 const NoSSR = dynamic(() => Promise.resolve(_NoSSR), {
   ssr: false,
-  loading: () => <p className='text-center pt-5'>Loading...</p>,
+  loading: () => <Loading/>,
 });
 
 export default function AppWrappers({ children }: { children: ReactNode }) {
