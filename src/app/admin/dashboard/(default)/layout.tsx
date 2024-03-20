@@ -345,9 +345,10 @@ const Dashboard = () => {
             <div className=" mt-5" >
            
 
-              {["today", "yesterday", "weekly", "monthly", "yearly", "all"]?.map((ele: any) => {
+              {["today", "yesterday", "weekly", "monthly", "yearly", "all"]?.map((ele: any,index:any) => {
                 return (
                   <button
+                  key={index}
                     className={`border  rounded-md px-2 py-2 m-1 capitalize outline-none ${timeFrameTop === ele ? "border-blue-500" : "border gray-200"}`}
                     onClick={() => { setTimeFrameTop(ele); }}
                   >

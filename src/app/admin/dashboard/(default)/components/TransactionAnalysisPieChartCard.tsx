@@ -122,10 +122,10 @@ const TransactionAnalysisPieChartCard = ({ type, datesTop, timeFrameTop, selectO
             }
 
 
-            {false && <div className="w-full rounded-2xl sm:px-8 md:px-12 py-3 shadow-2xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+            {/* {false && <div className="w-full rounded-2xl sm:px-8 md:px-12 py-3 shadow-2xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
               {pieChartData?.map((data: any, index: number) => {
                 return (
-                  <div className="lg:flex md:block flex-col items-center justify-center">
+                  <div key={index} className="lg:flex md:block flex-col items-center justify-center">
                     <div className="flex items-center justify-center gap-4">
                       <div
                         className={`h-2 w-2 rounded-full`}
@@ -143,7 +143,7 @@ const TransactionAnalysisPieChartCard = ({ type, datesTop, timeFrameTop, selectO
                   </div>
                 );
               })}
-            </div>}
+            </div>} */}
 
           </div>
         </>
