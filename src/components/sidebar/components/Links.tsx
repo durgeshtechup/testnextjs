@@ -12,12 +12,13 @@ import {
 import { IRoute } from 'types/navigation';
 import NavLink from 'components/link/NavLink';
 import { useCallback } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
   //  Chakra color mode
   const pathname = usePathname();
+  const router = useRouter()
 
   const { routes, hovered, mini } = props;
   // verifies if routeName is the one active (in browser input)
@@ -210,7 +211,8 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
         );
       } else {
         return (
-          <Link href={route.layout + route.path} key={key}>
+          // <span onClick={()=>router.push(route.layout + route.path)} href={route.layout + route.path} key={key}>
+          <span onClick={()=>router.push(route.layout + route.path)}  key={key}>
             {route.icon ? (
               <div className="relative mb-3 flex hover:cursor-pointer">
                 <li className="my-[3px] flex cursor-pointer items-center px-[30px]">
@@ -273,7 +275,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
                 </li>
               </div>
             )}
-          </Link>
+          </span>
         );
       }
     });
@@ -286,7 +288,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
         route.layout === '/rtl'
       ) {
         return (
-          <Link key={index} href={route.layout + route.path}>
+          <span key={index} onClick={()=>router.push(route.layout + route.path)} >
             <div
               className={`relative ${
                 mini === false
@@ -318,7 +320,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
                 </span>
               </li>
             </div>
-          </Link>
+          </span>
         );
       }
     });
