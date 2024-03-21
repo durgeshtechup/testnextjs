@@ -7,12 +7,13 @@ import { ClientProvider } from 'clientProvider';
 import Head from 'next/head';
 import { getToken } from 'utils/auth';
 import { useRouter } from 'next/navigation';
+import {NextUIProvider} from '@nextui-org/react';
 // import '@asseinfo/react-kanban/dist/styles.css';
 // import '/public/styles/Plugins.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 
-  
+  const navigate=useRouter()
   return (
     <html lang="en">
    
@@ -22,8 +23,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </div>
       
       <ClientProvider>
+        <NextUIProvider navigate={navigate.push} >
+        <AppWrappers
+        
+        >{children}</AppWrappers>
 
-        <AppWrappers>{children}</AppWrappers>
+        </NextUIProvider>
+
+        
+
+       
       </ClientProvider>
 
       </body>
