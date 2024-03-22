@@ -419,7 +419,7 @@ const Dashboard = () => {
 
 
 
-      <div className="mb-6 mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
+      <div className="mb-6 mt-5 grid grid-cols-1 gap-5 xl:grid-cols-1">
         {recentTtransactions ? (
           <LatestPayments selectOrg={selectOrg} selectClient={selectClient} selectCard={selectCard} datesTop={datesTop} timeFrameTop={timeFrameTop} paymentName={show_paymentName} />
         ) : null}
@@ -435,15 +435,18 @@ const Dashboard = () => {
         ) : null}
 
         {/*<div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">*/}
+        <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
         {(approvedTransList && timeFrameTop) ? (<AllADPayments type="approved" selectOrg={selectOrg} selectClient={selectClient} selectCard={selectCard} datesTop={datesTop} timeFrameTop={timeFrameTop} />) : null}
         {(declinedTransList && timeFrameTop) ? (<AllADPayments type="decline" selectOrg={selectOrg} selectClient={selectClient} selectCard={selectCard} datesTop={datesTop} timeFrameTop={timeFrameTop} />) : null}
+     </div>
         {/*</div>*/}
 
 
         {/*<div className="my-5 grid grid-cols-1 gap-5 md:grid-cols-2">*/}
+        <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
         {wavechart ? (<TotalSpent selectOrg={selectOrg} selectClient={selectClient} selectCard={selectCard} datesTop={datesTop} timeFrameTop={timeFrameTop} />) : null}
         {transactionAnaylsis ? (<TransactionAnalysisPieChartCard type="approved" selectOrg={selectOrg} selectClient={selectClient} selectCard={selectCard} datesTop={datesTop} timeFrameTop={timeFrameTop} />) : null}
-
+</div>
         {/* <WeeklyRevenue /> */}
         {/*</div>*/}
 

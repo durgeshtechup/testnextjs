@@ -621,7 +621,7 @@ console.log("MasterCard",MasterCard)
                   <RefundModal
                     info={info.row.original}
                     fetchPayments={fetchPayments}
-                    enRefund={enRefund.refund}
+                    enRefund={enRefund?.refund}
                     transactionID={info.row.original.et_id}
                   />
                 )}

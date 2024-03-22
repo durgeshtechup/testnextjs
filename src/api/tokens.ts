@@ -24,3 +24,24 @@ export const getAllTokens = (
             });
     });
 };
+
+
+export const verifyTokenId = (data: {
+    password: any;
+    otp: any;
+    token_unique_id: any
+}): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        authRequest({
+            url: `/api/v1/token/verify`,
+            method: "post",
+            data
+        })
+            .then(({ data }) => {
+                resolve(data);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
+};

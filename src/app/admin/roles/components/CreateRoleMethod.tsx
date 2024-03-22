@@ -67,6 +67,23 @@ const CreateRoleMethod = ({
     "Payment show method name",
     "Edit payment status"
   ];
+
+  const TokenData = [
+    "View token list",
+    "Token show method name"
+  ];
+
+  const ApiData = [
+    "Api access"
+  ];
+  const PayoutsData = [
+    "View payout list",
+    "View payout response information",
+    "Payout show method name"
+  ];
+  const SuperAdminData = [
+    "Super admin view"
+  ];
   const UserData = [
     "View self created user",
     "View user list",
@@ -76,7 +93,7 @@ const CreateRoleMethod = ({
     "Delete user",
   ];
   const PaymentMethodData = ["View payment method list", "Edit payment method", "Show payment method name"];
-  const SubscriptionData = ["View Subscription list"];
+  const SubscriptionData = ["View Subscription list", "Subscription show method name"];
   const SettlementData = ["View Settlement list"];
   const RoleData = [
     "View role list",
@@ -84,6 +101,7 @@ const CreateRoleMethod = ({
     "Edit role",
     "Delete role",
     "View role",
+    "View super admin role permission"
   ];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -93,6 +111,9 @@ const CreateRoleMethod = ({
   const [selectedUser, setSelectedUser] = React.useState<any>([]);
 
   const [selectedPay, setSelectedPay] = React.useState<any>([]);
+  const [selectedToken, setSelectedToken] = React.useState<any>([]);
+  const [selectedPayouts, setSelectedPayouts] = React.useState<any>([]);
+  const [selectedSuperAdmin, setSelectedSuperAdmin] = React.useState<any>([]);
   const [selectedClient, setSelectedClient] = React.useState<any>([]);
   const [selectedOrganization, setSelectedOrganization] = React.useState<any>(
     []
@@ -103,6 +124,11 @@ const CreateRoleMethod = ({
   const [selecteSubscription, setSelecteSubscription] = React.useState<any>([]);
   const [selectedDashboard, setSelectedDashboard] = React.useState<any>([]);
   const [formValuesErr, setFormValuesErr] = React.useState<any>(rootForm);
+
+  const [selectedApi, setSelectedApi] = React.useState<any>([]);
+
+
+
 
   const handleClose = () => {
     setFormValues(rootForm);
@@ -161,88 +187,107 @@ const CreateRoleMethod = ({
           payment_method: {
             view_payment_method_list: selectedPayMeth?.includes(
               "View payment method list"
-            ),
-            edit_payment_method: selectedPayMeth?.includes("Edit payment method"),
-            show_payment_method_name: selectedPayMeth?.includes("Show payment method name"),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
+            edit_payment_method: selectedPayMeth?.includes("Edit payment method") || selectedSuperAdmin?.includes("Super admin view"),
+            show_payment_method_name: selectedPayMeth?.includes("Show payment method name") || selectedSuperAdmin?.includes("Super admin view"),
             // edit_payment_status: selectedPayMeth?.includes("Edit payment status"),
 
           },
 
           dashboard: {
-            view_dashboard_header: selectedDashboard?.includes("View dashboard header"),
-            view_dashboard_recent_transactions: selectedDashboard?.includes("View dashboard recent transactions"),
-            view_dashboard_approved_transactions_piechart: selectedDashboard?.includes("View dashboard approved transactions piechart"),
-            view_dashboard_declined_transactions_piechart: selectedDashboard?.includes("View dashboard declined transactions piechart"),
-            view_dashboard_approved_transactions_list: selectedDashboard?.includes("View dashboard approved transactions list"),
-            view_dashboard_declined_transactions_list: selectedDashboard?.includes("View dashboard declined transactions list"),
-            view_dashboard_wavechart: selectedDashboard?.includes("View dashboard wavechart"),
-            view_dashboard_transaction_anaylsis: selectedDashboard?.includes("View dashboard transaction anaylsis"),
-            show_dashboard_method_name: selectedDashboard?.includes("Show dashboard method name"),
+            view_dashboard_header: selectedDashboard?.includes("View dashboard header") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_recent_transactions: selectedDashboard?.includes("View dashboard recent transactions") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_approved_transactions_piechart: selectedDashboard?.includes("View dashboard approved transactions piechart") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_declined_transactions_piechart: selectedDashboard?.includes("View dashboard declined transactions piechart") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_approved_transactions_list: selectedDashboard?.includes("View dashboard approved transactions list") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_declined_transactions_list: selectedDashboard?.includes("View dashboard declined transactions list") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_wavechart: selectedDashboard?.includes("View dashboard wavechart") || selectedSuperAdmin?.includes("Super admin view"),
+            view_dashboard_transaction_anaylsis: selectedDashboard?.includes("View dashboard transaction anaylsis") || selectedSuperAdmin?.includes("Super admin view"),
+            show_dashboard_method_name: selectedDashboard?.includes("Show dashboard method name") || selectedSuperAdmin?.includes("Super admin view"),
           },
           user: {
-            view_user_list: selectedUser?.includes("View user list"),
-            view_self_created_user: selectedUser?.includes("View self created user"),
-            add_user: selectedUser?.includes("Add user"),
-            view_user: selectedUser?.includes("View user"),
-            edit_user: selectedUser?.includes("Edit user"),
-            delete_user: selectedUser?.includes("Delete user"),
+            view_user_list: selectedUser?.includes("View user list") || selectedSuperAdmin?.includes("Super admin view"),
+            view_self_created_user: selectedUser?.includes("View self created user") || selectedSuperAdmin?.includes("Super admin view"),
+            add_user: selectedUser?.includes("Add user") || selectedSuperAdmin?.includes("Super admin view"),
+            view_user: selectedUser?.includes("View user") || selectedSuperAdmin?.includes("Super admin view"),
+            edit_user: selectedUser?.includes("Edit user") || selectedSuperAdmin?.includes("Super admin view"),
+            delete_user: selectedUser?.includes("Delete user") || selectedSuperAdmin?.includes("Super admin view"),
 
           },
           payment: {
-            view_payment_list: selectedPay?.includes("View payment list"),
-            refund_payment_list: selectedPay?.includes("Refund payment list"),
+            view_payment_list: selectedPay?.includes("View payment list") || selectedSuperAdmin?.includes("Super admin view"),
+            refund_payment_list: selectedPay?.includes("Refund payment list") || selectedSuperAdmin?.includes("Super admin view"),
             view_payment_response_information: selectedPay?.includes(
               "View payment response information"
-            ),
-            view_payment_receipt: selectedPay?.includes("View payment receipt"),
-            payment_show_method_name: selectedPay?.includes("Payment show method name"),
-            edit_payment_status: selectedPay?.includes("Edit payment status"),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
+            view_payment_receipt: selectedPay?.includes("View payment receipt") || selectedSuperAdmin?.includes("Super admin view"),
+            payment_show_method_name: selectedPay?.includes("Payment show method name") || selectedSuperAdmin?.includes("Super admin view"),
+            edit_payment_status: selectedPay?.includes("Edit payment status") || selectedSuperAdmin?.includes("Super admin view"),
+          },
+          token: {
+            view_token_list: selectedToken?.includes("View token list") || selectedSuperAdmin?.includes("Super admin view"),
+            token_show_method_name: selectedToken?.includes("Token show method name") || selectedSuperAdmin?.includes("Super admin view"),
+          },
+          payout: {
+            view_payout_list: selectedPayouts?.includes("View payout list") || selectedSuperAdmin?.includes("Super admin view"),
+            view_payout_response_information: selectedPayouts?.includes(
+              "View payout response information"
+            ) || selectedSuperAdmin?.includes("Super admin view"),
+            payout_show_method_name: selectedPayouts?.includes("Payout show method name") || selectedSuperAdmin?.includes("Super admin view"),
+          },
+          super_admin: {
+            super_admin_view: selectedSuperAdmin?.includes("Super admin view")
           },
           organization: {
             view_organization_list: selectedOrganization?.includes(
               "View organization list"
-            ),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
             add_organization:
-              selectedOrganization?.includes("Add organization"),
+              selectedOrganization?.includes("Add organization") || selectedSuperAdmin?.includes("Super admin view"),
             view_organization:
-              selectedOrganization?.includes("View organization"),
+              selectedOrganization?.includes("View organization") || selectedSuperAdmin?.includes("Super admin view"),
             edit_organization:
-              selectedOrganization?.includes("Edit organization"),
-            delete_organization: selectedOrganization?.includes("Delete organization"),
+              selectedOrganization?.includes("Edit organization") || selectedSuperAdmin?.includes("Super admin view"),
+            delete_organization: selectedOrganization?.includes("Delete organization") || selectedSuperAdmin?.includes("Super admin view"),
             organization_show_method_name: selectedOrganization?.includes(
               "Organization show method name"
-            ),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
           },
           client: {
-            view_client_list: selectedClient?.includes("View client list"),
-            add_client: selectedClient?.includes("Add client"),
-            view_client: selectedClient?.includes("View client"),
-            edit_client: selectedClient?.includes("Edit client"),
-            delete_client: selectedClient?.includes("Delete client"),
+            view_client_list: selectedClient?.includes("View client list") || selectedSuperAdmin?.includes("Super admin view"),
+            add_client: selectedClient?.includes("Add client") || selectedSuperAdmin?.includes("Super admin view"),
+            view_client: selectedClient?.includes("View client") || selectedSuperAdmin?.includes("Super admin view"),
+            edit_client: selectedClient?.includes("Edit client") || selectedSuperAdmin?.includes("Super admin view"),
+            delete_client: selectedClient?.includes("Delete client") || selectedSuperAdmin?.includes("Super admin view"),
             client_gateway_settings: selectedClient?.includes(
               "Client gateway settings"
-            ),
-            client_gateway_routing: selectedClient?.includes("Client gateway routing"),
-            client_show_method_name: selectedClient?.includes("Client show method name"),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
+            client_gateway_routing: selectedClient?.includes("Client gateway routing") || selectedSuperAdmin?.includes("Super admin view"),
+            client_show_method_name: selectedClient?.includes("Client show method name") || selectedSuperAdmin?.includes("Super admin view"),
             client_gateway_pricing: selectedClient?.includes(
               "Client gateway pricing"
-            ),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
             client_gateway_settlement: selectedClient?.includes(
               "Client gateway settlement"
-            ),
+            ) || selectedSuperAdmin?.includes("Super admin view"),
           },
           role: {
-            view_role_list: selectedRole?.includes("View role list"),
-            add_role: selectedRole?.includes("Add role"),
-            edit_role: selectedRole?.includes("Edit role"),
-            delete_role: selectedRole?.includes("Delete role"),
-            view_role: selectedRole?.includes("View role"),
+            view_role_list: selectedRole?.includes("View role list") || selectedSuperAdmin?.includes("Super admin view"),
+            add_role: selectedRole?.includes("Add role") || selectedSuperAdmin?.includes("Super admin view"),
+            edit_role: selectedRole?.includes("Edit role") || selectedSuperAdmin?.includes("Super admin view"),
+            delete_role: selectedRole?.includes("Delete role") || selectedSuperAdmin?.includes("Super admin view"),
+            view_role: selectedRole?.includes("View role") || selectedSuperAdmin?.includes("Super admin view"),
+            view_super_admin_role_permission: selectedRole?.includes("View super admin role permission") || selectedSuperAdmin?.includes("Super admin view"),
           },
           subscription: {
-            view_subscription_list: selecteSubscription?.includes("View Subscription list"),
+            view_subscription_list: selecteSubscription?.includes("View Subscription list") || selectedSuperAdmin?.includes("Super admin view"),
+            subscription_show_method_name: selecteSubscription?.includes("Subscription show method name") || selectedSuperAdmin?.includes("Super admin view"),
           },
           settlement: {
-            view_role_list: selecteSettlement?.includes("View Settlement list"),
+            view_role_list: selecteSettlement?.includes("View Settlement list") || selectedSuperAdmin?.includes("Super admin view"),
+          },
+          api: {
+            api_access: selectedApi?.includes("Api access") || selectedSuperAdmin?.includes("Super admin view"),
           },
         };
         if (id) {
@@ -293,6 +338,32 @@ const CreateRoleMethod = ({
           return data?.payment?.value[key];
         })
       );
+      setSelectedToken(
+        TokenData?.filter((item) => {
+          const key = item.toLowerCase().replace(/ /g, "_");
+          return data?.token?.value[key];
+        })
+      );
+      setSelectedApi(
+        ApiData?.filter((item) => {
+          const key = item.toLowerCase().replace(/ /g, "_");
+          return data?.api?.value[key];
+        })
+      );
+      setSelectedPayouts(
+        PayoutsData?.filter((item) => {
+          const key = item.toLowerCase().replace(/ /g, "_");
+          return data?.payout?.value[key];
+        })
+      );
+      setSelectedSuperAdmin(
+        SuperAdminData?.filter((item) => {
+          const key = item.toLowerCase().replace(/ /g, "_");
+          return data?.super_admin?.value[key];
+        })
+      );
+
+
       setSelectedUser(
         UserData?.filter((item) => {
           const key = item.toLowerCase().replace(/ /g, "_");
@@ -337,8 +408,21 @@ const CreateRoleMethod = ({
     UserData?.length > 0 && selectedUser?.length === UserData?.length;
   const isAllSelectedPay =
     PaymentData?.length > 0 && selectedPay?.length === PaymentData?.length;
+  const isAllSelectedToken =
+    TokenData?.length > 0 && selectedToken?.length === TokenData?.length;
+  const isAllSelectedApi =
+    ApiData?.length > 0 && selectedApi?.length === ApiData?.length;
+
+  const isAllSelectedPayouts =
+    PayoutsData?.length > 0 && selectedPayouts?.length === PayoutsData?.length;
+
+  const isAllSelectedSuperAdmin =
+    SuperAdminData?.length > 0 && selectedSuperAdmin?.length === SuperAdminData?.length;
+
+
   const isAllSelectedClient =
     ClientData?.length > 0 && selectedClient?.length === ClientData?.length;
+
   const isAllSelectedOrganization =
     OrganizationData?.length > 0 &&
     selectedOrganization?.length === OrganizationData?.length;
@@ -366,7 +450,30 @@ const CreateRoleMethod = ({
         setSelectedPay(
           selectedPay?.length === PaymentData?.length ? [] : PaymentData
         );
-      } else if (id === "client") {
+      }
+      else if (id === "token") {
+        setSelectedToken(
+          selectedToken?.length === TokenData?.length ? [] : TokenData
+        );
+      }
+      else if (id === "api") {
+        setSelectedApi(
+          selectedApi?.length === ApiData?.length ? [] : ApiData
+        );
+      }
+      else if (id === "payout") {
+        setSelectedPayouts(
+          selectedPayouts?.length === PayoutsData?.length ? [] : PayoutsData
+        );
+      }
+      else if (id === "super_admin") {
+        setSelectedSuperAdmin(
+          selectedSuperAdmin?.length === SuperAdminData?.length ? [] : SuperAdminData
+        );
+      }
+
+
+      else if (id === "client") {
         setSelectedClient(
           selectedClient?.length === ClientData?.length ? [] : ClientData
         );
@@ -404,7 +511,21 @@ const CreateRoleMethod = ({
         setSelectedUser([]);
       } else if (id === "pay") {
         setSelectedPay([]);
-      } else if (id === "client") {
+      }
+      else if (id === "token") {
+        setSelectedToken([]);
+      }
+      else if (id === "payout") {
+        setSelectedPayouts([]);
+      }
+      else if (id === "super_admin") {
+        setSelectedSuperAdmin([]);
+      }
+      else if (id === "api") {
+        setSelectedApi([]);
+      }
+
+      else if (id === "client") {
         setSelectedClient([]);
       } else if (id === "org") {
         setSelectedOrganization([]);
@@ -442,7 +563,54 @@ const CreateRoleMethod = ({
         } else {
           setSelectedPay([...selectedPay, value]);
         }
-      } else if (id === "client") {
+      }
+      else if (id === "token") {
+        if (selectedToken?.includes(value)) {
+          setSelectedToken(
+            selectedToken?.filter((data: any) => {
+              return data !== value;
+            })
+          );
+        } else {
+          setSelectedToken([...selectedToken, value]);
+        }
+      }
+      else if (id === "api") {
+        if (selectedApi?.includes(value)) {
+          setSelectedApi(
+            selectedApi?.filter((data: any) => {
+              return data !== value;
+            })
+          );
+        } else {
+          setSelectedApi([...selectedApi, value]);
+        }
+      }
+      else if (id === "payout") {
+        if (selectedPayouts?.includes(value)) {
+          setSelectedPayouts(
+            selectedPayouts?.filter((data: any) => {
+              return data !== value;
+            })
+          );
+        } else {
+          setSelectedPayouts([...selectedPayouts, value]);
+        }
+      }
+      else if (id === "super_admin") {
+        if (selectedSuperAdmin?.includes(value)) {
+          setSelectedSuperAdmin(
+            selectedSuperAdmin?.filter((data: any) => {
+              return data !== value;
+            })
+          );
+        } else {
+          setSelectedSuperAdmin([...selectedSuperAdmin, value]);
+        }
+      }
+
+
+      else if (id === "client") {
         if (selectedClient?.includes(value)) {
           setSelectedClient(
             selectedClient?.filter((data: any) => {
@@ -561,15 +729,11 @@ const CreateRoleMethod = ({
             onOpen();
           }}
         >
-          {/* <Card extra="w-fit px-5 cursor-pointer"> */}
-            <button
-            //  className="flex items-center justify-center gap-2 whitespace-nowrap p-5 text-navy-700 outline-none dark:text-gray-200"
-            className="flex items-center justify-center gap-2 whitespace-nowrap p-2 text-navy-700 outline-none dark:text-gray-200 border rounded "
-
-             >
+          <Card extra="w-fit px-5 cursor-pointer">
+            <button className="flex items-center justify-center gap-2 whitespace-nowrap p-5 text-navy-700 outline-none dark:text-gray-200">
               <BsPlusCircle className="h-5 w-5 text-brand-500" /><span className="text-brand-500"> Create Role</span>
             </button>
-          {/* </Card> */}
+          </Card>
         </div>
       ) : null}
       <Modal isOpen={isOpen} onClose={() => { }}>
@@ -630,7 +794,49 @@ const CreateRoleMethod = ({
                   onChange={handleValueChange}
                 />
 
+
+                {
+                  singleRoleData?.[0]?.role?.value?.view_super_admin_role_permission &&
+
+                  <div className="mx-1 m-3 mt-5 max-w-full overflow-hidden rounded-xl bg-white  border">
+                    <div className="p-0">
+                      {/* <div className="flex gap-2 bg-indigo-50 p-2 px-4">
+                      <Checkbox
+                        id="super_admin"
+                        value={isAllSelectedSuperAdmin ? -1 : "all"}
+                        checked={isAllSelectedSuperAdmin}
+                        onChange={handleChange}
+                        disabled={viewMode}
+                        color={viewMode ? "gray" : ""}
+                      />
+
+                      <h2 className=" font-lg text-base text-navy-700">
+                        Super Admin
+                      </h2>
+                    </div> */}
+                      <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
+                        {SuperAdminData?.map((data, index) => {
+                          return (
+                            <div className=" flex gap-2">
+                              <Checkbox
+                                id="super_admin"
+                                value={data}
+                                checked={selectedSuperAdmin.indexOf(data) > -1}
+                                onChange={handleChange}
+                                disabled={viewMode}
+                                color={viewMode ? "gray" : ""}
+                              />
+                              <p className="font-medium text-navy-600">
+                                {data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>}
                 <div className="mb-4 grid grid-cols-1 gap-1 md:grid-cols-2">
+
                   <div className="mx-1 mt-8 max-w-md overflow-hidden rounded-xl bg-white shadow-lg">
                     <div className="p-0">
                       <div className="flex gap-2 bg-indigo-50 p-2 px-4">
@@ -658,7 +864,7 @@ const CreateRoleMethod = ({
                           );*/
 
                           return (
-                            <div key={index} className="mt-3 flex gap-2">
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="dashboard"
                                 value={data}
@@ -668,7 +874,9 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data === "Show dashboard method name" ? "Show gateway name" : data.replace("dashboard", "")}
+                                {data === "Show dashboard method name" ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) : data.replace("dashboard", "").replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
+
+
                               </p>
                             </div>
                           );
@@ -703,7 +911,7 @@ const CreateRoleMethod = ({
                           );*/
 
                           return (
-                            <div className="mt-3 flex gap-2" key={index} >
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="client"
                                 value={data}
@@ -713,7 +921,7 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data === "Client show method name" ? "Show gateway name" : data}
+                                {data === "Client show method name" ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) : data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
                               </p>
                             </div>
                           );
@@ -740,7 +948,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {OrganizationData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index} >
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="org"
                                 value={data}
@@ -752,7 +960,7 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data == "Organization show method name" ? "Show gateway name" : data}
+                                {data == "Organization show method name" ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) : data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
                               </p>
                             </div>
                           );
@@ -779,7 +987,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {PaymentData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index}>
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="pay"
                                 value={data}
@@ -791,14 +999,14 @@ const CreateRoleMethod = ({
                               <p className="font-medium text-navy-600">
                                 {
                                   data == "Payment show method name"
-                                    ? "Show transaction name"
+                                    ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
                                     : data == "View payment list"
-                                      ? "View transaction list"
+                                      ? "View transaction list".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
                                       : data == "Refund payment list"
-                                        ? "Refund transaction list"
+                                        ? "Refund transaction list".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
                                         : data == "Edit payment status"
-                                          ? "Edit transaction status"
-                                          : data
+                                          ? "Edit transaction status".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
+                                          : data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
                                 }
                               </p>
                             </div>
@@ -826,7 +1034,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {UserData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index}>
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="user"
                                 value={data}
@@ -836,7 +1044,7 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data}
+                                {data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
                               </p>
                             </div>
                           );
@@ -863,7 +1071,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {PaymentMethodData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index} >
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="paymeth"
                                 value={data}
@@ -875,12 +1083,12 @@ const CreateRoleMethod = ({
                               <p className="font-medium text-navy-600">
                                 {
                                   data == "View payment method list"
-                                    ? "View gateway list"
+                                    ? "View gateway list".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
                                     : data == "Show payment method name"
-                                      ? "Show gateway name"
+                                      ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
                                       : data == "Edit payment method"
-                                        ? "Edit gateway"
-                                        : data
+                                        ? "Edit gateway".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
+                                        : data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
 
                                 }
                               </p>
@@ -909,7 +1117,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {RoleData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index} >
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="role"
                                 value={data}
@@ -919,7 +1127,7 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data}
+                                {data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
                               </p>
                             </div>
                           );
@@ -946,7 +1154,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {SubscriptionData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index} >
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="subscription"
                                 value={data}
@@ -956,7 +1164,9 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data}
+                                {data == "Subscription show method name" ?
+                                  "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) :
+                                  data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
                               </p>
                             </div>
                           );
@@ -983,7 +1193,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {SettlementData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2" key={index} >
+                            <div className="mt-3 flex gap-2">
                               <Checkbox
                                 id="settlement"
                                 value={data}
@@ -993,12 +1203,126 @@ const CreateRoleMethod = ({
                                 color={viewMode ? "gray" : ""}
                               />
                               <p className="font-medium text-navy-600">
-                                {data}
+                                {data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
                               </p>
                             </div>
                           );
                         })}
                       </div>
+                    </div>
+                  </div>
+                  <div className="mx-1 mt-8 max-w-md overflow-hidden rounded-xl bg-white shadow-lg">
+                    <div className="p-0">
+                      <div className="flex gap-2 bg-indigo-50 p-2 px-4">
+                        <Checkbox
+                          id="token"
+                          value={isAllSelectedToken ? -1 : "all"}
+                          checked={isAllSelectedToken}
+                          onChange={handleChange}
+                          disabled={viewMode}
+                          color={viewMode ? "gray" : ""}
+                        />
+
+                        <h2 className=" font-lg text-base text-navy-700">
+                          Token
+                        </h2>
+                      </div>
+                      <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
+                        {TokenData?.map((data, index) => {
+                          return (
+                            <div className="mt-3 flex gap-2">
+                              <Checkbox
+                                id="token"
+                                value={data}
+                                checked={selectedToken.indexOf(data) > -1}
+                                onChange={handleChange}
+                                disabled={viewMode}
+                                color={viewMode ? "gray" : ""}
+                              />
+                              <p className="font-medium text-navy-600">
+                                {data == "Token show method name" ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) : data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div className="mx-1 mt-8 max-w-md overflow-hidden rounded-xl bg-white shadow-lg">
+                    <div className="p-0">
+                      <div className="flex gap-2 bg-indigo-50 p-2 px-4">
+                        <Checkbox
+                          id="payout"
+                          value={isAllSelectedPayouts ? -1 : "all"}
+                          checked={isAllSelectedPayouts}
+                          onChange={handleChange}
+                          disabled={viewMode}
+                          color={viewMode ? "gray" : ""}
+                        />
+
+                        <h2 className=" font-lg text-base text-navy-700">
+                          Payout
+                        </h2>
+                      </div>
+                      <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
+                        {PayoutsData?.map((data, index) => {
+                          return (
+                            <div className="mt-3 flex gap-2">
+                              <Checkbox
+                                id="payout"
+                                value={data}
+                                checked={selectedPayouts.indexOf(data) > -1}
+                                onChange={handleChange}
+                                disabled={viewMode}
+                                color={viewMode ? "gray" : ""}
+                              />
+                              <p className="font-medium text-navy-600">
+                                {data == "Payout show method name" ? "Show gateway name".replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) : data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mx-1 mt-8 max-w-md overflow-hidden rounded-xl bg-white shadow-lg">
+                    <div className="p-0">
+                      <div className="flex gap-2 bg-indigo-50 p-2 px-4">
+                        <Checkbox
+                          id="api"
+                          value={isAllSelectedApi ? -1 : "all"}
+                          checked={isAllSelectedApi}
+                          onChange={handleChange}
+                          disabled={viewMode}
+                          color={viewMode ? "gray" : ""}
+                        />
+
+                        <h2 className=" font-lg text-base text-navy-700">
+                          API
+                        </h2>
+                      </div>
+                      <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
+                        {ApiData?.map((data, index) => {
+                          return (
+                            <div className="mt-3 flex gap-2">
+                              <Checkbox
+                                id="api"
+                                value={data}
+                                checked={selectedApi.indexOf(data) > -1}
+                                onChange={handleChange}
+                                disabled={viewMode}
+                                color={viewMode ? "gray" : ""}
+                              />
+                              <p className="font-medium text-navy-600">
+                                {data?.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+
                     </div>
                   </div>
                 </div>

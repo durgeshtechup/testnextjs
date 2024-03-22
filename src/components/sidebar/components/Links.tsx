@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import DashIcon from 'components/icons/DashIcon';
 import { FaCircle } from 'react-icons/fa';
 import {
@@ -14,13 +14,18 @@ import NavLink from 'components/link/NavLink';
 import { useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { ClientContext } from 'clientProvider';
 
 export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
   //  Chakra color mode
   const pathname = usePathname();
   const router = useRouter()
 
+
   const { routes, hovered, mini } = props;
+  const { singleRoleData } = useContext(ClientContext);
+  // console.log("singleRoleData",singleRoleData)
+
   // verifies if routeName is the one active (in browser input)
   const activeRoute = useCallback(
     (routeName: string) => {
@@ -29,9 +34,15 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
     [pathname],
   );
 
+
+
+
+ 
+
+ 
   const createLinks = (routes: IRoute[]) => {
     return routes.map((route, key) => {
-      if (route.collapse) {
+      if (false) {
         return (
           <Accordion allowToggle key={key}>
             <AccordionItem mb="8px" border="none" key={key}>
@@ -210,6 +221,8 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
           </Accordion>
         );
       } else {
+        // if (route.layout === "/admin") {
+          // if (routeHiden(route)) {
         return (
           // <span onClick={()=>router.push(route.layout + route.path)} href={route.layout + route.path} key={key}>
           <span onClick={()=>router.push(route.layout + route.path)}  key={key}>
@@ -277,6 +290,8 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
             )}
           </span>
         );
+      // }}
+
       }
     });
   };
@@ -326,7 +341,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
     });
   };
   // BRAND
-  return <>{createLinks(routes)}</>;
+  return <>{singleRoleData?.length>0&&createLinks(routes)}</>;
 }
 
 export default SidebarLinks;

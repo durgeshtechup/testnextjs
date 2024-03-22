@@ -5,7 +5,6 @@ import { ClientContext } from 'clientProvider';
 import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { getId } from 'utils/auth';
-import RoleMethodTable from './RoleMethodTable';
 
 export type PaymentMethodRowObj = {
   id: string;
