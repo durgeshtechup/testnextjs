@@ -206,8 +206,8 @@ function Tokenlist(
                                 <thead className="text-xs text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
                                     {headerGroups.map((headerGroup, index) => (
                                         <tr key={index} {...headerGroup.getHeaderGroupProps()} className="!border-px !border-gray-400">
-                                            {headerGroup.headers.map((column) => (
-                                                <th {...column.getHeaderProps(column.getSortByToggleProps())}
+                                            {headerGroup.headers.map((column,cindex) => (
+                                                <th key={cindex} {...column.getHeaderProps(column.getSortByToggleProps())}
                                                     className={`text-start text-sm font-bold text-gray-900 dark:text-white cursor-pointer border-b-[1px] border-gray-200 pb-2 pr-4 pt-4 text-start pl-3`} >
                                                     {column.render('Header')}
                                                     <div className=" justify-between text-xs text-gray-200">
@@ -230,7 +230,7 @@ function Tokenlist(
                                                 <tr {...row.getRowProps()} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
                                                     {row.cells.map((cell, index) => (
 
-                                                        <td {...cell.getCellProps()} className={`min-w-[150px] border-white/0 py-3  pr-4 pl-3 `}
+                                                        <td key={index} {...cell.getCellProps()} className={`min-w-[150px] border-white/0 py-3  pr-4 pl-3 `}
                                                         > <div className="flex items-center">
                                                                 <div className="flex items-center text-sm font-normal text-navy-700 dark:text-white">
 

@@ -817,7 +817,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {SuperAdminData?.map((data, index) => {
                           return (
-                            <div className=" flex gap-2">
+                            <div key={index} className=" flex gap-2">
                               <Checkbox
                                 id="super_admin"
                                 value={data}
@@ -864,7 +864,7 @@ const CreateRoleMethod = ({
                           );*/
 
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="dashboard"
                                 value={data}
@@ -911,7 +911,7 @@ const CreateRoleMethod = ({
                           );*/
 
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="client"
                                 value={data}
@@ -948,7 +948,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {OrganizationData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="org"
                                 value={data}
@@ -987,7 +987,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {PaymentData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="pay"
                                 value={data}
@@ -1034,7 +1034,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {UserData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="user"
                                 value={data}
@@ -1071,7 +1071,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {PaymentMethodData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="paymeth"
                                 value={data}
@@ -1117,7 +1117,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {RoleData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="role"
                                 value={data}
@@ -1154,7 +1154,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {SubscriptionData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="subscription"
                                 value={data}
@@ -1193,7 +1193,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {SettlementData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="settlement"
                                 value={data}
@@ -1230,7 +1230,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {TokenData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="token"
                                 value={data}
@@ -1269,7 +1269,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {PayoutsData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="payout"
                                 value={data}
@@ -1306,7 +1306,7 @@ const CreateRoleMethod = ({
                       <div className="max-h-72 overflow-auto overflow-x-hidden px-6 px-[30px] py-3 scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-full scrollbar-w-1">
                         {ApiData?.map((data, index) => {
                           return (
-                            <div className="mt-3 flex gap-2">
+                            <div key={index} className="mt-3 flex gap-2">
                               <Checkbox
                                 id="api"
                                 value={data}
