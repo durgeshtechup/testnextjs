@@ -143,7 +143,7 @@ const routes = [
    {
     name: 'Gateways',
     layout: '/admin',
-    path: '/gateways',
+    path: '/gateway',
     icon: <MdOutlineCardTravel className="text-inherit h-5 w-5" />,
     collapse: false,
     items:[]
@@ -151,9 +151,9 @@ const routes = [
   },
    // ---Organizations----
    {
-    name: 'Subscriptions',
+    name: 'Subscription',
     layout: '/admin',
-    path: '/subscriptions',
+    path: '/subscription',
     icon: <MdMoney className="text-inherit h-5 w-5" />,
     collapse: false,
     items:[]
@@ -161,14 +161,16 @@ const routes = [
   },
    // ---Roles----
    {
-    name: 'Roles',
+    name: 'Role',
     layout: '/admin',
-    path: '/roles',
+    path: '/role',
     icon: <FaUserCheck className="text-inherit h-5 w-5" />,
     collapse: false,
     items:[]
 
   },
+
+  
 
   // --- NFTs ---
 

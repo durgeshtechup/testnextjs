@@ -37,7 +37,128 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
 
 
 
- 
+  const routeHiden = (route: any) => {
+    console.log("route.path", route.path, pathname,route?.layout + "/" + route?.path, singleRoleData);
+
+    let isStatus = false;
+    if (
+      route?.path ===
+      singleRoleData?.[0]?.payment_method?.name?.replace(" ", "")
+    ) {
+      isStatus =
+        singleRoleData?.[0]?.payment_method?.value?.view_payment_method_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.payment_method?.value?.view_payment_method_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (
+      route?.path === singleRoleData?.[0]?.subscription?.name?.replace(" ", "")
+
+    ) {
+      isStatus = singleRoleData?.[0]?.subscription?.value?.view_subscription_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.subscription?.value?.view_subscription_list
+      ) {
+        router.push("/admin/dashboard");
+
+      }
+
+    }
+    if (
+      route?.path ===
+      singleRoleData?.[0]?.client?.name?.replace(" ", "") + "s"
+    ) {
+      isStatus = singleRoleData?.[0]?.client?.value?.view_client_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.client?.value?.view_client_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (
+      route?.path ===
+      singleRoleData?.[0]?.organization?.name?.replace(" ", "") + "s"
+    ) {
+      isStatus =
+        singleRoleData?.[0]?.organization?.value?.view_organization_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.organization?.value?.view_organization_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (
+      route?.path ===
+      singleRoleData?.[0]?.payment?.name?.replace(" ", "") + "s"
+    ) {
+      isStatus = singleRoleData?.[0]?.payment?.value?.view_payment_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.payment?.value?.view_payment_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (
+      route?.path == singleRoleData?.[0]?.token?.name?.replace(" ", "") + "s"
+
+    ) {
+      isStatus = singleRoleData?.[0]?.token?.value?.view_token_list;;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.token?.value?.view_token_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (
+      route?.path == singleRoleData?.[0]?.payout?.name?.replace(" ", "")
+
+    ) {
+      isStatus = singleRoleData?.[0]?.payout?.value?.view_payout_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.payout?.value?.view_payout_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (route?.path === singleRoleData?.[0]?.role?.name?.replace(" ", "")) {
+      isStatus = singleRoleData?.[0]?.role?.value?.view_role_list;
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !singleRoleData?.[0]?.role?.value?.view_role_list
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (
+      route?.path ===
+      singleRoleData?.[0]?.user?.name?.replace(" ", "") + "s"
+    ) {
+      isStatus = (singleRoleData?.[0]?.user?.value?.view_user_list || singleRoleData?.[0]?.user?.value?.view_self_created_user);
+      if (
+        location?.pathname === route?.layout + "/" + route?.path &&
+        !(
+          singleRoleData?.[0]?.user?.value?.view_user_list ||
+          singleRoleData?.[0]?.user?.value?.view_self_created_user
+        )
+      ) {
+        router.push("/admin/dashboard");
+      }
+    }
+    if (route?.name === "Dashboard") {
+      isStatus = true;
+    }
+
+    return isStatus;
+  };
 
  
   const createLinks = (routes: IRoute[]) => {
@@ -221,8 +342,8 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
           </Accordion>
         );
       } else {
-        // if (route.layout === "/admin") {
-          // if (routeHiden(route)) {
+        if (route.layout === "/admin") {
+          if (routeHiden({...route,path:route?.path?.replace("/","")})) {
         return (
           // <span onClick={()=>router.push(route.layout + route.path)} href={route.layout + route.path} key={key}>
           <span onClick={()=>router.push(route.layout + route.path)}  key={key}>
@@ -290,7 +411,7 @@ export function SidebarLinks(props: { routes: IRoute[]; [x: string]: any }) {
             )}
           </span>
         );
-      // }}
+      }}
 
       }
     });
