@@ -1019,13 +1019,13 @@ console.log("MasterCard",MasterCard)
               </span>
             </label>
           </div> */}
-          <div className="flex flex-wrap justify-around gap-2 md:pe-[0px] lg:pe-[0px]">
+          <div className="flex flex-wrap justify-between gap-2 md:pe-[0px] lg:pe-[0px]">
 
 
             <button
               onClick={() => handelOnDownloadCSV()}
               disabled={Loading}
-              className="flex w-[159px] my-1 md:my-3 items-center gap-2 rounded-full bg-white      px-3 py-2 text-black hover:bg-indigo-500 hover:text-white border  "
+              className="flex w-[159px] my-1 md:my-3 items-center gap-2 rounded-full bg-white      pl-3 py-2 text-black hover:bg-indigo-500 hover:text-white border  "
 
               // className="flex w-[155px] my-1 md:my-3 items-center gap-2 rounded-full bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-500"
             >

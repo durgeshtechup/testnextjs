@@ -41,7 +41,7 @@ function SidebarHorizon(props: { routes: IRoute[]; [x: string]: any }) {
       onMouseLeave={() => setHovered(false)}
     >
       <Card
-        extra={`ml-3 w-full h-[96.5vh] sm:mr-4 sm:my-4 m-7 !rounded-[20px]`}
+        extra={`ml-3 w-full h-[96.8vh] sm:mr-4 sm:my-4 m-2 !rounded-[20px]`}
       >
         <Scrollbars
           autoHide
@@ -121,7 +121,7 @@ function SidebarHorizon(props: { routes: IRoute[]; [x: string]: any }) {
               </div>
               <div className="mb-7 mt-[58px] h-px bg-gray-200 dark:bg-white/10" />
               {/* Nav item */}
-              <ul>
+              <ul className='pb-7'>
                 <Links mini={mini} hovered={hovered} routes={routes} />
                {/* {
                 routes?.map((m:any)=>{
@@ -141,38 +141,7 @@ function SidebarHorizon(props: { routes: IRoute[]; [x: string]: any }) {
               </ul>
             </div>
             {/* Free Horizon Card    */}
-          {false&&  <div className="mb-[30px] mt-[28px]">
-              <div className="flex justify-center">
-                <SidebarCard mini={mini} hovered={hovered} />
-              </div>
-              {/* Sidebar profile info */}
-              <div className="mt-5 flex items-center justify-center gap-3">
-                <div className="relative h-12 w-12 rounded-full bg-blue-200">
-                  <Image
-                    fill
-                    src={avatar4}
-                    className="rounded-full"
-                    alt="avatar"
-                  />
-                </div>
-                <div
-                  className={`ml-1 ${
-                    mini === false
-                      ? 'block'
-                      : mini === true && hovered === true
-                      ? 'block'
-                      : 'block xl:hidden'
-                  }`}
-                >
-                  <h4 className="text-base font-bold text-navy-700 dark:text-white">
-                    Adela Parkson
-                  </h4>
-                  <p className="text-sm font-medium text-gray-600">
-                    Product Designer
-                  </p>
-                </div>
-              </div>
-            </div>}
+        
           </div>
         </Scrollbars>
       </Card>

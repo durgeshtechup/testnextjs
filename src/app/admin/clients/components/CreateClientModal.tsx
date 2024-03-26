@@ -315,7 +315,7 @@ const CreateClientModal = ({
           }}
         >
           {/* <Card extra="w-fit px-5 cursor-pointer border-brand-500"> */}
-            <button className="flex items-center justify-center gap-2 whitespace-nowrap border p-2 rounded-md text-navy-700 outline-none dark:text-gray-200">
+            <button className="flex items-center justify-center gap-2 whitespace-nowrap border p-2 rounded-md text-navy-700 outline-none dark:text-gray-200 my-2">
               <BsPlusCircle className="h-5 w-5 text-brand-500" /><span className="text-brand-500"> Add new client</span>
             </button>
           {/* </Card> */}

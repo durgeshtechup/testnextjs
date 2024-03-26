@@ -349,7 +349,7 @@ function SubscriptionList(props: {
               </div>
 
             </div>
-            <div className="flex flex-wrap justify-around gap-2 md:pe-[0px] lg:pe-[0px]">
+            <div className="flex flex-wrap justify-between gap-2 md:pe-[0px] lg:pe-[0px]">
             {/* <Searchbox onSearch={handleValueChange} /> */}
 
            
