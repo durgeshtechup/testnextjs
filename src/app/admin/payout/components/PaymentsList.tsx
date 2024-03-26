@@ -795,14 +795,14 @@ function PaymentTable(props: {
               </span>
             </label>
           </div> */}
-          <div className="flex flex-wrap justify-around gap-2 md:pe-[0px] lg:pe-[0px]">
+          <div className="flex flex-wrap justify-between md:pe-[0px] lg:pe-[0px]">
 
 
             <button
               // onClick={() => handelOnDownloadCSV()}
               disabled={Loading}
               // className="flex w-[155px] my-1 md:my-3 items-center gap-2 rounded-full bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-500"
-              className="flex w-[159px] my-1 md:my-3 items-center gap-2 rounded-full bg-white      px-3 py-2 text-black hover:bg-indigo-500 hover:text-white border  "
+              className="flex w-[159px] my-1 md:my-3 items-center gap-2 rounded-full bg-white      px-3 py-2 text-black hover:bg-indigo-500 hover:text-white border mr-2 "
             
             >
               <FaDownload className="w-[14px] " />
@@ -856,7 +856,7 @@ function PaymentTable(props: {
           <DivLoader className="m-5 h-6 w-6 border-indigo-500" />
         ) : (
           <table className="w-full w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr
                   key={headerGroup.id}
