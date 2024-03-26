@@ -26,7 +26,7 @@ import {
 import React, { useEffect, useMemo, useState } from 'react';
 import Card from "components/card";
 import Searchbox from "components/fields/Searchbox";
-import { getImage } from "utils/commonFunction";
+import { getCardSVG, getImage } from "utils/commonFunction";
 import { convertToFloat } from "utils/formatNumber";
 import { BsReceipt } from "react-icons/bs";
 import Pagination from "components/pagination";
@@ -65,6 +65,7 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 import { FaDownload } from "react-icons/fa";
 import { DownloadCSV, subscriptionGetClients } from "api/subscription";
+import Image from "next/image";
 
 export type Payment = {
   id: string;
@@ -148,29 +149,29 @@ function SubscriptionList(props: {
   );
 
 
-  const getCardSVG = (type: string) => {
-    switch (type) {
-      case 'VISA':
-        return <img className="" style={{ maxWidth: "65px" }} title={type} src={`${visa}`} alt={`${type}`} />
-      case 'MasterCard':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${MasterCard}`} alt={`${type}`} />
-      case 'Discover':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${Discover}`} alt={`${type}`} />
-      case 'Amex':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${Amex}`} alt={`${type}`} />
-      case 'MaestroCard':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${MaestroCard}`} alt={`${type}`} />
-      case 'DinersClub':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${DinersClub}`} alt={`${type}`} />
-      case 'JCB':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${JCB}`} alt={`${type}`} />
-      case 'UnionPay':
-        return <img style={{ maxWidth: "65px" }} title={type} src={`${UnionPay}`} alt={`${type}`} />
+  // const getCardSVG = (type: string) => {
+  //   switch (type) {
+  //     case 'VISA':
+  //       return <Image className="" style={{ maxWidth: "65px" }} title={type} src={`${visa}`} alt={`${type}`} />
+  //     case 'MasterCard':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${MasterCard}`} alt={`${type}`} />
+  //     case 'Discover':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${Discover}`} alt={`${type}`} />
+  //     case 'Amex':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${Amex}`} alt={`${type}`} />
+  //     case 'MaestroCard':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${MaestroCard}`} alt={`${type}`} />
+  //     case 'DinersClub':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${DinersClub}`} alt={`${type}`} />
+  //     case 'JCB':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${JCB}`} alt={`${type}`} />
+  //     case 'UnionPay':
+  //       return <Image style={{ maxWidth: "65px" }} title={type} src={`${UnionPay}`} alt={`${type}`} />
 
-      default: return "-"
-    }
+  //     default: return "-"
+  //   }
 
-  }
+  // }
 
 
   const method = roleData[0]?.payment?.value?.payment_show_method_name;
@@ -563,7 +564,7 @@ function SubscriptionList(props: {
                                             ) : (
 
                                               <span className="flex items-center ">
-                                                <img
+                                                <Image
                                                   style={{ height: "auto", width: "15px" }}
                                                   className="h-auto w-20"
                                                   src={getImage(payment?.gateway_name)}
@@ -587,7 +588,14 @@ function SubscriptionList(props: {
                                         </td>
                                         <td className="min-w-[150px] border-white/0 py-3  pr-4" > <div className="flex items-center">
                                           <p className="text-sm font-normal text-navy-700 dark:text-white">
-                                            {getCardSVG(payment.card_type)}
+                                            {/* {getCardSVG(payment.card_type)} */}
+
+                                            <Image
+                                                  style={{ height: "auto", width: "45px" }}
+                                                  className="h-auto w-20"
+                                                  src={getCardSVG(payment?.card_type)}
+                                                  alt="Gateway Image"
+                                                />
                                           </p>
                                         </div>
                                         </td>
@@ -834,7 +842,7 @@ function SubscriptionList(props: {
                                                 ) : (
 
                                                   <span className="flex items-center ">
-                                                    <img
+                                                    <Image
                                                       style={{ height: "auto", width: "15px" }}
                                                       className="h-auto w-20"
                                                       src={getImage(payment?.gateway_name)}
@@ -858,7 +866,13 @@ function SubscriptionList(props: {
                                             </td>
                                             <td className="min-w-[150px] border-white/0 py-3  pr-4" > <div className="flex items-center">
                                               <p className="text-sm font-bold text-navy-700 dark:text-white">
-                                                {getCardSVG(payment.card_type)}
+                                                {/* {getCardSVG(payment.card_type)} */}
+                                                <Image
+                                                  style={{ height: "auto", width: "45px" }}
+                                                  className="h-auto w-20"
+                                                  src={getCardSVG(payment?.card_type)}
+                                                  alt="Gateway Image"
+                                                />
                                               </p>
                                             </div>
                                             </td>

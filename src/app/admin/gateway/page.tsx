@@ -22,7 +22,9 @@ export type PaymentMethodRowObj = {
   refund: boolean;
   apm: boolean;
   is_active: boolean;
-  direct_debit: boolean;
+  direct_debit?: boolean;
+  payin?: boolean;
+  token?: boolean;
 };
 
 const PaymentMethod = () => {

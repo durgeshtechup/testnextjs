@@ -20,6 +20,7 @@ import InputField from 'components/fields/InputField';
 
 import StatusRender from 'app/admin/transactions/components/StatusRender';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Tokenlist(
     props: {
@@ -251,7 +252,7 @@ function Tokenlist(
                                                                                 : cell?.column?.id == "gateway_name" ?
                                                                                     (roleData[0]?.token?.value?.token_show_method_name ?
                                                                                         <span className="flex items-center ">
-                                                                                            <img
+                                                                                            <Image
                                                                                                 style={{ height: "auto", width: "15px" }}
                                                                                                 className="h-auto w-20"
                                                                                                 src={getImage(cell?.row?.original?.gateway_name)}

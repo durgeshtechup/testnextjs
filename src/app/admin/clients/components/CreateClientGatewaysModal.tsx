@@ -272,6 +272,8 @@ export const GatewayTypes: iGateway[] = [
       merchantId_live: "",
       passcode_test: "",
       passcode_live: "",
+      hash_key_test: "",
+      hash_key_live: "",
       is_live: false,
       descriptor: "",
     },
@@ -306,6 +308,7 @@ export const GatewayTypes: iGateway[] = [
       companyNum_live: "",
       personalHashkey_test: "",
       personalHashkey_live: "",
+
       is_live: false,
       descriptor: "",
     },
@@ -420,7 +423,6 @@ const CreateClientGatewaysModal = ({
     const settelment_right = singleRoleData[0]?.client?.value?.client_gateway_settlement;
     setPricingRight(pricing_right)
     setSettelmentRight(settelment_right)
-    // alert(method)
     setMethodName(method);
 
     //console.log("methodName",methodName);
@@ -432,6 +434,12 @@ const CreateClientGatewaysModal = ({
     let saved_form_CardTypes = gatewayTypes?.filter(
       (data) => data?.name === type
     )?.[0]?.card_types;
+
+    let saved_form_fees_details_test = gatewayTypes?.filter(
+      (data) => data?.name === type
+    )
+
+    console.log("saved_form_fees_details_test", saved_form_fees_details_test)
 
     let newSavedInput =
       saved_form_inputs &&
@@ -463,7 +471,17 @@ const CreateClientGatewaysModal = ({
               payout_fees: item?.payout_fees || {},
               wallet_ids: item?.wallet_ids || [],
               ewallet_New_addressess: [],
-              disCard_walletes: []
+              disCard_walletes: [],
+              fess_conditions: {
+                apm: saved_form_fees_details_test[0]?.apm,
+                payout: saved_form_fees_details_test[0]?.payout,
+                payin: saved_form_fees_details_test[0]?.payin
+              },
+              gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
+
+
+
 
             }
             : type === "Pix"
@@ -485,7 +503,15 @@ const CreateClientGatewaysModal = ({
                 payout_fees: item?.payout_fees || {},
                 wallet_ids: item?.wallet_ids || [],
                 ewallet_New_addressess: [],
-                disCard_walletes: []
+                disCard_walletes: [],
+                fess_conditions: {
+                  apm: saved_form_fees_details_test[0]?.apm,
+                  payout: saved_form_fees_details_test[0]?.payout,
+                  payin: saved_form_fees_details_test[0]?.payin
+                },
+                gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
+
               }
               : type === "Banwire"
                 ? {
@@ -503,7 +529,14 @@ const CreateClientGatewaysModal = ({
                   payout_fees: item?.payout_fees || {},
                   wallet_ids: item?.wallet_ids || [],
                   ewallet_New_addressess: [],
-                  disCard_walletes: []
+                  disCard_walletes: [],
+                  fess_conditions: {
+                    apm: saved_form_fees_details_test[0]?.apm,
+                    payout: saved_form_fees_details_test[0]?.payout,
+                    payin: saved_form_fees_details_test[0]?.payin
+                  },
+                  gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
 
                 }
                 : type === "Valitor"
@@ -522,7 +555,14 @@ const CreateClientGatewaysModal = ({
                     payout_fees: item?.payout_fees || {},
                     wallet_ids: item?.wallet_ids || [],
                     ewallet_New_addressess: [],
-                    disCard_walletes: []
+                    disCard_walletes: [],
+                    fess_conditions: {
+                      apm: saved_form_fees_details_test[0]?.apm,
+                      payout: saved_form_fees_details_test[0]?.payout,
+                      payin: saved_form_fees_details_test[0]?.payin
+                    },
+                    gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
                   }
                   : type === "Bambora"
                     ? {
@@ -540,13 +580,26 @@ const CreateClientGatewaysModal = ({
                       passcode_live: item?.inputs?.passcode_live
                         ? item?.inputs?.passcode_live
                         : "",
+                      hash_key_test: item?.inputs?.hash_key_test
+                        ? item?.inputs?.hash_key_test
+                        : saved_form_inputs_test?.hash_key_test,
+                      hash_key_live: item?.inputs?.hash_key_live
+                        ? item?.inputs?.hash_key_live
+                        : "",
                       client_card_types: item?.reserved_pricing?.client_card_types || [],
                       additional_fees: item?.reserved_pricing?.additional_fees || {},
                       cardTypes: saved_form_CardTypes,
                       payout_fees: item?.payout_fees || {},
                       wallet_ids: item?.wallet_ids || [],
                       ewallet_New_addressess: [],
-                      disCard_walletes: []
+                      disCard_walletes: [],
+                      fess_conditions: {
+                        apm: saved_form_fees_details_test[0]?.apm,
+                        payout: saved_form_fees_details_test[0]?.payout,
+                        payin: saved_form_fees_details_test[0]?.payin
+                      },
+                      gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
                     }
                     : type === "Re-set"
                       ? {
@@ -570,7 +623,14 @@ const CreateClientGatewaysModal = ({
                         payout_fees: item?.payout_fees || {},
                         wallet_ids: item?.wallet_ids || [],
                         ewallet_New_addressess: [],
-                        disCard_walletes: []
+                        disCard_walletes: [],
+                        fess_conditions: {
+                          apm: saved_form_fees_details_test[0]?.apm,
+                          payout: saved_form_fees_details_test[0]?.payout,
+                          payin: saved_form_fees_details_test[0]?.payin
+                        },
+                        gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
                       }
                       : type === "Memphis"
                         ? {
@@ -598,7 +658,14 @@ const CreateClientGatewaysModal = ({
                           payout_fees: item?.payout_fees || {},
                           wallet_ids: item?.wallet_ids || [],
                           ewallet_New_addressess: [],
-                          disCard_walletes: []
+                          disCard_walletes: [],
+                          fess_conditions: {
+                            apm: saved_form_fees_details_test[0]?.apm,
+                            payout: saved_form_fees_details_test[0]?.payout,
+                            payin: saved_form_fees_details_test[0]?.payin
+                          },
+                          gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
                         }
                         : type === "Raypd"
                           ? {
@@ -622,7 +689,14 @@ const CreateClientGatewaysModal = ({
                             payout_fees: item?.payout_fees || {},
                             wallet_ids: item?.wallet_ids || [],
                             ewallet_New_addressess: [],
-                            disCard_walletes: []
+                            disCard_walletes: [],
+                            fess_conditions: {
+                              apm: saved_form_fees_details_test[0]?.apm,
+                              payout: saved_form_fees_details_test[0]?.payout,
+                              payin: saved_form_fees_details_test[0]?.payin
+                            },
+                            gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
                           }
                           : type === "Scipiopay"
                             ? {
@@ -646,7 +720,14 @@ const CreateClientGatewaysModal = ({
                               payout_fees: item?.payout_fees || {},
                               wallet_ids: item?.wallet_ids || [],
                               ewallet_New_addressess: [],
-                              disCard_walletes: []
+                              disCard_walletes: [],
+                              fess_conditions: {
+                                apm: saved_form_fees_details_test[0]?.apm,
+                                payout: saved_form_fees_details_test[0]?.payout,
+                                payin: saved_form_fees_details_test[0]?.payin
+                              },
+                              gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
 
 
 
@@ -722,7 +803,14 @@ const CreateClientGatewaysModal = ({
                                   payout_fees: item?.payout_fees || {},
                                   wallet_ids: item?.wallet_ids || [],
                                   ewallet_New_addressess: [],
-                                  disCard_walletes: []
+                                  disCard_walletes: [],
+                                  fess_conditions: {
+                                    apm: saved_form_fees_details_test[0]?.apm,
+                                    payout: saved_form_fees_details_test[0]?.payout,
+                                    payin: saved_form_fees_details_test[0]?.payin
+                                  },
+                                  gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
 
 
 
@@ -743,15 +831,19 @@ const CreateClientGatewaysModal = ({
                                     personalHashkey_live: item?.inputs?.personalHashkey_live
                                       ? item?.inputs?.personalHashkey_live
                                       : "",
+
                                     client_card_types: item?.reserved_pricing?.client_card_types || [],
                                     additional_fees: item?.reserved_pricing?.additional_fees || {},
                                     cardTypes: saved_form_CardTypes,
                                     payout_fees: item?.payout_fees || {},
                                     wallet_ids: item?.wallet_ids || [],
                                     ewallet_New_addressess: [],
-                                    disCard_walletes: []
-
-
+                                    disCard_walletes: [],
+                                    fess_conditions: {
+                                      apm: saved_form_fees_details_test[0]?.apm,
+                                      payout: saved_form_fees_details_test[0]?.payout,
+                                      payin: saved_form_fees_details_test[0]?.payin
+                                    }
 
                                   } :
                                   type === "Kasha"
@@ -771,15 +863,20 @@ const CreateClientGatewaysModal = ({
                                       merchant_domain_live: item?.inputs?.merchant_domain_live
                                         ? item?.inputs?.merchant_domain_live
                                         : "",
-
-
                                       client_card_types: item?.reserved_pricing?.client_card_types || [],
                                       additional_fees: item?.reserved_pricing?.additional_fees || {},
                                       cardTypes: saved_form_CardTypes,
                                       payout_fees: item?.payout_fees || {},
                                       wallet_ids: item?.wallet_ids || [],
                                       ewallet_New_addressess: [],
-                                      disCard_walletes: []
+                                      disCard_walletes: [],
+                                      fess_conditions: {
+                                        apm: saved_form_fees_details_test[0]?.apm,
+                                        payout: saved_form_fees_details_test[0]?.payout,
+                                        payin: saved_form_fees_details_test[0]?.payin
+                                      },
+                                      gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
 
 
 
@@ -794,7 +891,14 @@ const CreateClientGatewaysModal = ({
                                           payout_fees: item?.payout_fees || {},
                                           wallet_ids: item?.wallet_ids || [],
                                           ewallet_New_addressess: [],
-                                          disCard_walletes: []
+                                          disCard_walletes: [],
+                                          fess_conditions: {
+                                            apm: saved_form_fees_details_test[0]?.apm,
+                                            payout: saved_form_fees_details_test[0]?.payout,
+                                            payin: saved_form_fees_details_test[0]?.payin
+                                          },
+                                          gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
 
                                         }
                                         : {
@@ -805,7 +909,14 @@ const CreateClientGatewaysModal = ({
                                           payout_fees: item?.payout_fees || {},
                                           wallet_ids: item?.wallet_ids || [],
                                           ewallet_New_addressess: [],
-                                          disCard_walletes: []
+                                          disCard_walletes: [],
+                                          fess_conditions: {
+                                            apm: saved_form_fees_details_test[0]?.apm,
+                                            payout: saved_form_fees_details_test[0]?.payout,
+                                            payin: saved_form_fees_details_test[0]?.payin
+                                          },
+                                          gateway_method_fees: item?.reserved_pricing?.gateway_method_fees || {}
+
                                         }
 
                                       : {
@@ -816,7 +927,9 @@ const CreateClientGatewaysModal = ({
 
         return {
           ...item,
-          inputs: clonedObject,
+          inputs: clonedObject
+
+
 
         };
       });
@@ -1080,7 +1193,10 @@ const CreateClientGatewaysModal = ({
           }
         }
       })
-    } else {
+    }
+
+
+    else {
       const name = e.target.id
       let value = e.target.value
 
@@ -1103,6 +1219,85 @@ const CreateClientGatewaysModal = ({
             ...prev?.additional_fees,
             [feeType]: {
               ...prev?.additional_fees[feeType],
+              [name]: value
+            }
+          }
+        }
+      })
+    }
+
+
+  }
+
+  const handleGatewayMethodfeesValueChange = (e: any, feeType: string) => {
+
+    if (feeType == "apm_currency_code") {
+      setFormValues((prev: any) => {
+        return {
+          ...prev,
+          gateway_method_fees: {
+            ...prev?.gateway_method_fees,
+            apm_fees: {
+              ...prev?.gateway_method_fees?.apm_fees,
+              currency_code: e
+            }
+          }
+        }
+      })
+    } else if (feeType == "payout_currency_code") {
+      setFormValues((prev: any) => {
+        return {
+          ...prev,
+          gateway_method_fees: {
+            ...prev?.gateway_method_fees,
+            payout_fees: {
+              ...prev?.gateway_method_fees?.payout_fees,
+              currency_code: e
+            }
+          }
+        }
+      })
+    }
+
+    else if (feeType == "payin_currency_code") {
+      setFormValues((prev: any) => {
+        return {
+          ...prev,
+          gateway_method_fees: {
+            ...prev?.gateway_method_fees,
+            payin_fees: {
+              ...prev?.gateway_method_fees?.payin_fees,
+              currency_code: e
+            }
+          }
+        }
+      })
+    }
+
+
+    else {
+      const name = e.target.id
+      let value = e.target.value
+
+
+
+
+
+      if (name == "percentage_fee") {
+        value = value >= 0 && value <= 100 ? value : ""
+      }
+
+      if (name == "fixed_fee") {
+        value = value >= 0 ? value : ""
+      }
+
+      setFormValues((prev: any) => {
+        return {
+          ...prev,
+          gateway_method_fees: {
+            ...prev?.gateway_method_fees,
+            [feeType]: {
+              ...prev?.gateway_method_fees[feeType],
               [name]: value
             }
           }
@@ -1425,6 +1620,7 @@ const CreateClientGatewaysModal = ({
           }));
           setGatewayTypes(newDataArray);
 
+
           data.forEach((elem) => {
             setStoreGateWayId(elem.id);
           });
@@ -1573,8 +1769,8 @@ const CreateClientGatewaysModal = ({
     } else if (type === "Bambora") {
       const data =
         formValues?.is_live === false || formValues?.is_live === undefined
-          ? ["merchantId_live", "passcode_live"]
-          : ["merchantId_test", "passcode_test"];
+          ? ["merchantId_live", "passcode_live", "hash_key_live"]
+          : ["merchantId_test", "passcode_test", "hash_key_test"];
       data?.map((item) => {
         return escape_arr?.push(item);
       });
@@ -1651,7 +1847,7 @@ const CreateClientGatewaysModal = ({
 
           ]
           : [
-            "companyNum_test", "personalHashkey_test"
+            "companyNum_test", "personalHashkey_test",
 
 
           ];
@@ -1988,6 +2184,21 @@ const CreateClientGatewaysModal = ({
               : savedgateway[0]?.inputs?.passcode_test
                 ? savedgateway[0]?.inputs?.passcode_test
                 : "",
+          hash_key_test:
+            formValues?.is_live === false
+              ? formValues?.hash_key_test
+                ? formValues?.hash_key_test?.trim()
+                : ""
+              : savedgateway[0]?.inputs?.hash_key_test
+                ? savedgateway[0]?.inputs?.hash_key_test
+                : "",
+          hash_key_live: formValues?.is_live === true
+            ? formValues?.hash_key_live
+              ? formValues?.hash_key_live?.trim()
+              : ""
+            : savedgateway[0]?.inputs?.hash_key_live
+              ? savedgateway[0]?.inputs?.hash_key_live
+              : "",
 
           descriptor: formValues?.descriptor,
 
@@ -2211,6 +2422,7 @@ const CreateClientGatewaysModal = ({
 
 
 
+
           descriptor: formValues?.descriptor,
 
         };
@@ -2284,7 +2496,7 @@ const CreateClientGatewaysModal = ({
         Object.keys(newFormValuesForPayload)?.forEach((key) => {
           console.log("key", key)
           // alert(key)
-          if (["client_card_types", "additional_fees", "payout_fees", "wallet_ids", "disCard_walletes", "ewallet_New_addressess", "bank_account_numbers", "cardTypes"].includes(key)) {
+          if (["client_card_types", "additional_fees", "payout_fees", "wallet_ids", "disCard_walletes", "ewallet_New_addressess", "bank_account_numbers", "cardTypes", "fess_conditions"].includes(key)) {
             delete newFormValuesForPayload[key]
           }
 
@@ -2314,14 +2526,15 @@ const CreateClientGatewaysModal = ({
           new_currency: currencyConv == "requestPassthrough" ? "none" : selectedCurrency,
           reserved_pricing: {
             client_card_types: formValues?.client_card_types,
-            additional_fees: formValues?.additional_fees
+            additional_fees: formValues?.additional_fees,
+            gateway_method_fees: formValues?.gateway_method_fees
           },
           settlement: {
             payout_fees: formValues?.payout_fees,
             ewallet_addressess: NewWalletDetails,
             discarded_wallets: formValues?.disCard_walletes
+          },
 
-          }
 
         };
 
@@ -3478,6 +3691,39 @@ const CreateClientGatewaysModal = ({
                             <InputField
                               variant="auth"
                               extra="mb-1"
+                              label="Hash Key*"
+                              placeholder="Hash Key"
+                              id={
+                                formValues.is_live === true
+                                  ? "hash_key_live"
+                                  : formValues.is_live === false
+                                    ? "hash_key_test"
+                                    : "hash_key_test"
+                              }
+                              type="text"
+                              value={
+                                formValues.is_live === true
+                                  ? formValues?.hash_key_live
+                                  : formValues.is_live === false
+                                    ? formValues?.hash_key_test
+                                    : ""
+                              }
+                              state={
+                                formValues.is_live === true
+                                  ? formValuesErr?.hash_key_live
+                                    ? "error"
+                                    : ""
+                                  : formValues.is_live === false
+                                    ? formValuesErr?.hash_key_test
+                                      ? "error"
+                                      : ""
+                                    : ""
+                              }
+                              onChange={handleValueChange}
+                            />
+                            <InputField
+                              variant="auth"
+                              extra="mb-1"
                               label="Descriptor"
                               placeholder="descriptor"
                               id="descriptor"
@@ -3902,6 +4148,8 @@ const CreateClientGatewaysModal = ({
                               }
                               onChange={handleValueChange}
                             />
+
+
 
 
                             <InputField
@@ -4464,59 +4712,9 @@ const CreateClientGatewaysModal = ({
                                     {/* <div className="items-center max-h-[50px]   overflow-hidden z-10 min-w-[150px] max-w-[200px] w-[170px] z-0 bg-green overflow-visible z-0"> */}
                                     <div className=" max-h-[50px] z-0 bg-green overflow-visible z-0 min-w-[150px] max-w-[200px] w-[170px]">
 
-                                      {/* <Select
-                                        options={currencyCodes.map((currencyCode) => {
-                                          const currencyDetails = getCurrencySymbol(currencyCode);
-                                          return {
-
-                                            value: currencyCode,
-                                            label: `${currencyCode}: ${currencyDetails.title}`
-                                          }
-                                        })}
-
-                                        // isClearable={true}
 
 
-                                        value={[{ value: formValues?.additional_fees?.chargeback_fees?.currency_code || "", label: (formValues?.additional_fees?.chargeback_fees?.currency_code || "Select Currency") + (formValues?.additional_fees?.chargeback_fees?.currency_code ? ": " + getCurrencySymbol(formValues?.additional_fees?.chargeback_fees?.currency_code)?.title : "") }]}
 
-                                        onChange={(e) => { handleAdditionalValueChange(e, "chargeback_currency_code") }}
-
-
-                                        className="basic-single"
-                                      /> */}
-
-                                      {/* <Dropdown
-                                        // id={String(index)}
-                                        optionValue="value"
-                                        filter
-
-                                        optionLabel="label"
-                                        placeholder="Select currency"
-                                        options={currencyCodes.map((currencyCode) => {
-                                          const currencyDetails = getCurrencySymbol(currencyCode);
-                                          return {
-
-                                            value: currencyCode,
-                                            label: `${currencyCode}: ${currencyDetails.title}`
-                                          }
-                                        })}
-                                        // isClearable={true}
-                                        value={
-                                          formValues?.additional_fees?.chargeback_fees?.currency_code
-
-                                        }
-                                        required={false}
-
-                                        onBlur={() => {
-
-
-                                        }}
-
-
-                                        onChange={(e) => { handleAdditionalValueChange(e, "chargeback_currency_code") }}
-                                        className="w-full border"
-
-                                      /> */}
 
 
                                       <AntSelect
@@ -4685,6 +4883,283 @@ const CreateClientGatewaysModal = ({
                                     </div>
                                   </td>
                                 </tr>
+
+                                {formValues?.fess_conditions?.apm && <tr className="bg-white dark:bg-gray-800 z-0 overflow-y-visible bg-midnight max-h-[50px">
+                                  <td className="px-2 py-4 w-[25%]  text-gray-900">
+                                    APM fees
+                                  </td>
+                                  <td className="py-2 ps-1">
+                                    <div className="flex ">
+                                      <div className="relative z-0 flex-auto min-w-[100px]">
+                                        <input
+                                          type="number"
+                                          id="percentage_fee"
+                                          className="block py-2.5 px-0 text-center w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                          placeholder=" Fee "
+
+                                          value={formValues?.gateway_method_fees?.apm_fees?.percentage_fee ?? ""}
+                                          onChange={(e) => { handleGatewayMethodfeesValueChange(e, "apm_fees") }}
+
+                                        />
+                                        <div className="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 p-3 pb-5 pointer-events-none">
+                                          <span className="h-6" >%</span>
+                                        </div>
+                                      </div>
+
+                                      <div className="mx-2 items-center flex"><span>+</span></div>
+                                      <div className="relative z-0 flex-auto min-w-[100px]">
+                                        <input
+                                          type="number"
+                                          id="fixed_fee"
+                                          className="block py-2.5 px-0 text-center w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                          placeholder=" Fixed fee "
+                                          value={formValues?.gateway_method_fees?.apm_fees?.fixed_fee ?? ""}
+
+
+
+                                          onChange={(e) => { handleGatewayMethodfeesValueChange(e, "apm_fees") }}
+
+
+                                        />
+                                        <div className="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 p-3 pb-5 pointer-events-none">
+                                          <span className="h-6" >
+                                            {
+                                              formValues?.gateway_method_fees?.apm_fees?.currency_code
+                                            }
+                                          </span>
+                                        </div>
+
+
+
+
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td className="px-2 py-4">
+                                    <div className=" max-h-[50px] z-0 bg-green overflow-visible z-0 min-w-[150px] max-w-[200px] w-[170px]">
+
+
+
+
+
+
+
+                                      <AntSelect
+                                        showSearch
+                                        placeholder="Select currency"
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) => (option?.label ?? '').includes(input?.toUpperCase())}
+                                        filterSort={(optionA, optionB) =>
+                                          (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                        }
+
+                                        className="w-full"
+                                        options={currencyCodes.map((currencyCode) => {
+                                          const currencyDetails = getCurrencySymbol(currencyCode);
+                                          return {
+                                            value: currencyCode,
+                                            label: `${currencyCode}: ${currencyDetails.title?.toUpperCase()}`
+                                          }
+                                        })}
+                                        value={
+
+                                          formValues?.gateway_method_fees?.apm_fees?.currency_code
+                                        }
+                                        onChange={(e) => { handleGatewayMethodfeesValueChange(e, "apm_currency_code") }}
+
+                                        notFoundContent={"No options found"}
+
+
+                                      />
+
+                                    </div>
+                                  </td>
+                                </tr>}
+
+                                {formValues?.fess_conditions?.payout && <tr className="bg-white dark:bg-gray-800 z-0 overflow-y-visible bg-midnight max-h-[50px">
+                                  <td className="px-2 py-4 w-[25%]  text-gray-900">
+                                    Payout fees
+                                  </td>
+                                  <td className="py-2 ps-1">
+                                    <div className="flex ">
+                                      <div className="relative z-0 flex-auto min-w-[100px]">
+                                        <input
+                                          type="number"
+                                          id="percentage_fee"
+                                          className="block py-2.5 px-0 text-center w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                          placeholder=" Fee "
+
+                                          value={formValues?.gateway_method_fees?.payout_fees?.percentage_fee ?? ""}
+                                          onChange={(e) => { handleGatewayMethodfeesValueChange(e, "payout_fees") }}
+
+                                        />
+                                        <div className="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 p-3 pb-5 pointer-events-none">
+                                          <span className="h-6" >%</span>
+                                        </div>
+                                      </div>
+
+                                      <div className="mx-2 items-center flex"><span>+</span></div>
+                                      <div className="relative z-0 flex-auto min-w-[100px]">
+                                        <input
+                                          type="number"
+                                          id="fixed_fee"
+                                          className="block py-2.5 px-0 text-center w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                          placeholder=" Fixed fee "
+                                          value={formValues?.gateway_method_fees?.payout_fees?.fixed_fee ?? ""}
+
+
+
+                                          onChange={(e) => { handleGatewayMethodfeesValueChange(e, "payout_fees") }}
+
+
+                                        />
+                                        <div className="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 p-3 pb-5 pointer-events-none">
+                                          <span className="h-6" >
+                                            {
+                                              formValues?.gateway_method_fees?.payout_fees?.currency_code
+                                            }
+                                          </span>
+                                        </div>
+
+
+
+
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td className="px-2 py-4">
+                                    <div className=" max-h-[50px] z-0 bg-green overflow-visible z-0 min-w-[150px] max-w-[200px] w-[170px]">
+
+
+
+
+
+
+
+                                      <AntSelect
+                                        showSearch
+                                        placeholder="Select currency"
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) => (option?.label ?? '').includes(input?.toUpperCase())}
+                                        filterSort={(optionA, optionB) =>
+                                          (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                        }
+
+                                        className="w-full"
+                                        options={currencyCodes.map((currencyCode) => {
+                                          const currencyDetails = getCurrencySymbol(currencyCode);
+                                          return {
+                                            value: currencyCode,
+                                            label: `${currencyCode}: ${currencyDetails.title?.toUpperCase()}`
+                                          }
+                                        })}
+                                        value={
+
+                                          formValues?.gateway_method_fees?.payout_fees?.currency_code
+                                        }
+                                        onChange={(e) => { handleGatewayMethodfeesValueChange(e, "payout_currency_code") }}
+
+                                        notFoundContent={"No options found"}
+
+
+                                      />
+
+                                    </div>
+                                  </td>
+                                </tr>}
+
+
+                                {formValues?.fess_conditions?.payin && <tr className="bg-white dark:bg-gray-800 z-0 overflow-y-visible bg-midnight max-h-[50px">
+                                  <td className="px-2 py-4 w-[25%]  text-gray-900">
+                                    Payin fees
+                                  </td>
+                                  <td className="py-2 ps-1">
+                                    <div className="flex ">
+                                      <div className="relative z-0 flex-auto min-w-[100px]">
+                                        <input
+                                          type="number"
+                                          id="percentage_fee"
+                                          className="block py-2.5 px-0 text-center w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                          placeholder=" Fee "
+
+                                          value={formValues?.gateway_method_fees?.payin_fees?.percentage_fee ?? ""}
+                                          onChange={(e) => { handleGatewayMethodfeesValueChange(e, "payin_fees") }}
+
+                                        />
+                                        <div className="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 p-3 pb-5 pointer-events-none">
+                                          <span className="h-6" >%</span>
+                                        </div>
+                                      </div>
+
+                                      <div className="mx-2 items-center flex"><span>+</span></div>
+                                      <div className="relative z-0 flex-auto min-w-[100px]">
+                                        <input
+                                          type="number"
+                                          id="fixed_fee"
+                                          className="block py-2.5 px-0 text-center w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                          placeholder=" Fixed fee "
+                                          value={formValues?.gateway_method_fees?.payin_fees?.fixed_fee ?? ""}
+
+
+
+                                          onChange={(e) => { handleGatewayMethodfeesValueChange(e, "payin_fees") }}
+
+
+                                        />
+                                        <div className="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 p-3 pb-5 pointer-events-none">
+                                          <span className="h-6" >
+                                            {
+                                              formValues?.gateway_method_fees?.payin_fees?.currency_code
+                                            }
+                                          </span>
+                                        </div>
+
+
+
+
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td className="px-2 py-4">
+                                    <div className=" max-h-[50px] z-0 bg-green overflow-visible z-0 min-w-[150px] max-w-[200px] w-[170px]">
+
+
+
+
+
+
+
+                                      <AntSelect
+                                        showSearch
+                                        placeholder="Select currency"
+                                        optionFilterProp="children"
+                                        filterOption={(input, option) => (option?.label ?? '').includes(input?.toUpperCase())}
+                                        filterSort={(optionA, optionB) =>
+                                          (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                        }
+
+                                        className="w-full"
+                                        options={currencyCodes.map((currencyCode) => {
+                                          const currencyDetails = getCurrencySymbol(currencyCode);
+                                          return {
+                                            value: currencyCode,
+                                            label: `${currencyCode}: ${currencyDetails.title?.toUpperCase()}`
+                                          }
+                                        })}
+                                        value={
+
+                                          formValues?.gateway_method_fees?.payin_fees?.currency_code
+                                        }
+                                        onChange={(e) => { handleGatewayMethodfeesValueChange(e, "payin_currency_code") }}
+
+                                        notFoundContent={"No options found"}
+
+
+                                      />
+
+                                    </div>
+                                  </td>
+                                </tr>}
 
                               </tbody>
 
@@ -5037,7 +5512,7 @@ const CreateClientGatewaysModal = ({
       </Modal >
 
       <Modal isOpen={isOpenWalletAddress} onClose={onCloseWalletAddress}>
-        <ModalOverlay className="bg-[#000]   !opacity-30" />
+        <ModalOverlay className="bg-[#000]   !opacity-30 z-20" />
         <ModalContent className="!z-[1002] !m-auto   shadow !w-max min-w-[350px] !max-w-[85%] md:top-[12vh] ">
 
           <ModalBody className="">
@@ -5156,3 +5631,4 @@ const CreateClientGatewaysModal = ({
   );
 };
 export default CreateClientGatewaysModal;
+

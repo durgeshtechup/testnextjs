@@ -8,7 +8,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import InputField from "components/fields/InputField";
+// import InputField from "components/fields/InputField";
 import Card from "components/card";
 import DivLoader from "components/divloader/DivLoader";
 import React, { useState, useEffect, useContext } from "react";
@@ -30,51 +30,50 @@ import {
 // import { GatewayTypes } from "views/admin/clients/components/CreateClientGatewaysModal";
 // import { TruncateCopy } from "views/admin/organizations/components/CreateOrgModal";
 import { PaymentRowObj } from "../page";
-import InfoModal from "./InfoModal";
-import RefundModal from "./RefundModal";
+// import InfoModal from "./InfoModal";
+// import RefundModal from "./RefundModal";
 import { convertToFloat } from "utils/formatNumber";
-import ReceiptModal from "./ReceiptModal";
-import { BsReceipt } from "react-icons/bs";
+// import ReceiptModal from "./ReceiptModal";
+// import { BsReceipt } from "react-icons/bs";
 import { ClientContext } from "clientProvider";
 import { DownloadCSV, getLive, getStatusHistory } from "api/payments";
 import { toast } from "react-hot-toast";
-import { RiRotateLockFill } from "react-icons/ri";
+// import { RiRotateLockFill } from "react-icons/ri";
 import FilterModal from "./FilterModal";
 import { FaDownload } from "react-icons/fa";
 import ShortTruncateCopy from "components/common/ShortTruncateCopy";
 import Searchbox from "components/fields/Searchbox";
-import { getCardSVG, getImage } from "utils/commonFunction";
+// import { getImage } from "utils/commonFunction";
 import Pagination from "components/pagination";
 import StatusRender from "./StatusRender";
-import RetryModal from "./RetryModal";
+// import RetryModal from "./RetryModal";
 import visa from "assets/svg/card_type/visa.svg"
-import MasterCard from "../../../../../src/assets/svg/card_type/mastercard.svg"
-import Discover from "../../../../../src/assets/svg/card_type/discover.svg"
-import Amex from "../../../../../src/assets/svg/card_type/amex.svg"
-import MaestroCard from "../../../../../src/assets/svg/card_type/maestro.svg"
-import DinersClub from "../../../../../src/assets/svg/card_type/dinersclub.svg"
-import JCB from "../../../../../src/assets/svg/card_type/jcb.svg"
-import UnionPay from "../../../../../src/assets/svg/card_type/unionpay.svg"
-import TooltipHorizon from "components/tooltip";
-import { MdChangeCircle } from "react-icons/md";
-import ChangeStatusModal from "./StatusChangeModal";
-import {
-  Popover, PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor
-} from "@chakra-ui/popover";
-import { Portal } from "@chakra-ui/portal";
+import MasterCard from "assets/svg/card_type/mastercard.svg"
+import Discover from "assets/svg/card_type/discover.svg"
+import Amex from "assets/svg/card_type/amex.svg"
+import MaestroCard from "assets/svg/card_type/maestro.svg"
+import DinersClub from "assets/svg/card_type/dinersclub.svg"
+import JCB from "assets/svg/card_type/jcb.svg"
+import UnionPay from "assets/svg/card_type/unionpay.svg"
+// import TooltipHorizon from "components/tooltip";
+// import { MdChangeCircle } from "react-icons/md";
+// import ChangeStatusModal from "./StatusChangeModal";
+// import {
+//   Popover, PopoverTrigger,
+//   PopoverContent,
+//   PopoverHeader,
+//   PopoverBody,
+//   PopoverFooter,
+//   PopoverArrow,
+//   PopoverCloseButton,
+//   PopoverAnchor
+// } from "@chakra-ui/popover";
+// import { Portal } from "@chakra-ui/portal";
 // import moment from "moment";
 // import PopoverHorizon from "components/popover";
 // import { UncontrolledPopover, PopoverHeader as PopoverHeaderR, PopoverBody as PopoverBodyR, Button as ButtonR } from 'reactstrap';
-import { GatewayTypes } from "app/admin/clients/components/CreateClientGatewaysModal";
 import { TruncateCopy } from "app/admin/organizations/components/CreateOrgModal";
-import Image from "next/image";
+import { GatewayTypes } from "app/admin/clients/components/CreateClientGatewaysModal";
 
 function PaymentTable(props: {
   tableData: any;
@@ -129,7 +128,7 @@ function PaymentTable(props: {
 
   const [paymentHistoryData, setPaymentHistoryData] = useState<any>([])
 
-console.log("MasterCard",MasterCard)
+
 
   const pagination = React.useMemo(() => ({
     pageIndex,
@@ -151,62 +150,84 @@ console.log("MasterCard",MasterCard)
     })
   }
 
-  
+  const getCardSVG = (type: string) => {
+    switch (type) {
+      case 'VISA':
+        return <img className="" style={{ maxWidth: "65px" }} title={type} src={`${visa}`} alt={`${type}`} />
+      case 'MasterCard':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${MasterCard}`} alt={`${type}`} />
+      case 'Discover':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${Discover}`} alt={`${type}`} />
+      case 'Amex':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${Amex}`} alt={`${type}`} />
+      case 'MaestroCard':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${MaestroCard}`} alt={`${type}`} />
+      case 'DinersClub':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${DinersClub}`} alt={`${type}`} />
+      case 'JCB':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${JCB}`} alt={`${type}`} />
+      case 'UnionPay':
+        return <img style={{ maxWidth: "65px" }} title={type} src={`${UnionPay}`} alt={`${type}`} />
+
+      default: return "-"
+    }
+
+  }
 
   const method = roleData[0]?.payment?.value?.payment_show_method_name;
   const columns = [
-    columnHelper.accessor("payment_id", {
-      id: "payment_id",
-      header: () => <p></p>,
-      cell: ({ row }) => {
-        return (
-          <div className="flex h-12 w-12 items-center justify-center px-2">
+    // columnHelper.accessor("payment_id", {
+    //   id: "payment_id",
+    //   header: () => <p></p>,
+    //   cell: ({ row }) => {
+    //     return (
+    //       <div className="flex h-12 w-12 items-center justify-center px-2">
 
 
 
-            {row.getCanExpand() ? (
-              <>
-                <button
-                  {...{
-                    // onClick: row.getToggleExpandedHandler(),
-                    onClick: () => table.setExpanded({ [row.id]: !row.getIsExpanded() }),
-                    //  onClick: () => { row.getToggleExpandedHandler(); setExpandedRows((prev) => ({ [row.id]: !prev[row.id] })) },
-                    style: { cursor: "pointer" },
-                  }}
-                >
-                  {row.getIsExpanded() ? (
-                    // {Object.keys(expandedRows).includes(String(row.id)) && expandedRows[row.id]  ? (
+    //         {row.getCanExpand() ? (
+    //           <>
+    //             <button
+    //               {...{
+    //                 // onClick: row.getToggleExpandedHandler(),
+    //                 onClick: () => table.setExpanded({ [row.id]: !row.getIsExpanded() }),
+    //                 //  onClick: () => { row.getToggleExpandedHandler(); setExpandedRows((prev) => ({ [row.id]: !prev[row.id] })) },
+    //                 style: { cursor: "pointer" },
+    //               }}
+    //             >
+    //               {row.getIsExpanded() ? (
+    //                 // {Object.keys(expandedRows).includes(String(row.id)) && expandedRows[row.id]  ? (
 
-                    <MdKeyboardDoubleArrowDown className="h-5 w-5 text-indigo-500" />
-                  ) : (
-                    <MdKeyboardDoubleArrowRight className="h-5 w-5 text-indigo-500" />
-                  )}
-                </button>
-              </>
-            ) : (
-              ""
-            )}
-          </div>
-        );
-      },
-    }),
+    //                 <MdKeyboardDoubleArrowDown className="h-5 w-5 text-indigo-500" />
+    //               ) : (
+    //                 <MdKeyboardDoubleArrowRight className="h-5 w-5 text-indigo-500" />
+    //               )}
+    //             </button>
+    //           </>
+    //         ) : (
+    //           ""
+    //         )}
+    //       </div>
+    //     );
+    //   },
+    // }),
     columnHelper.accessor("client", {
       id: "client",
       header: () => (
-        <p className="text-sm font-bold text-gray-900 dark:text-white">
+        <p className="text-sm font-bold text-gray-900 dark:text-white pl-2">
           CLIENT NAME
         </p>
       ),
       cell: (info: any) => {
         return (
           <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
-              <div className="flex items-center">
-                <p className="text-sm font-normal text-navy-700 dark:text-white">
+            {/* {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
+              <div className="flex items-center pl-2">
+                <p className="text-sm font-bold text-navy-700 dark:text-white">
                   {info.getValue()}
                 </p>
               </div>
-            )}
+            )} */}
           </>
         );
       },
@@ -220,11 +241,11 @@ console.log("MasterCard",MasterCard)
       cell: (info) => {
         return (
           <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
-              <p className="text-sm font-normal text-navy-700 dark:text-white">
+            {/* {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
+              <p className="text-sm font-bold text-navy-700 dark:text-white">
                 {info.getValue()}
               </p>
-            )}
+            )} */}
           </>
         );
       },
@@ -240,9 +261,9 @@ console.log("MasterCard",MasterCard)
         //console.log("info.row",info.row.getIsExpanded());
         return (
           <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
+            {/* {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
               <div className="flex items-center">
-                <p className="text-sm font-normal uppercase text-navy-700 dark:text-white">
+                <p className="text-sm font-bold uppercase text-navy-700 dark:text-white">
                   {convertToFloat(info.getValue())}{" "}
                   {info?.row?.original?.currency}
 
@@ -251,7 +272,7 @@ console.log("MasterCard",MasterCard)
                   </span>}
                 </p>
               </div>
-            )}
+            )} */}
           </>
         );
       },
@@ -266,12 +287,12 @@ console.log("MasterCard",MasterCard)
       cell: (info) => {
         return (
           <>
-            <p className="text-sm font-normal uppercase text-navy-700 dark:text-white">
+            {/* <p className="text-sm font-bold uppercase text-navy-700 dark:text-white">
 
               {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
                 <ShortTruncateCopy info={info?.getValue()} showCopy={true} />
               )}
-            </p>
+            </p> */}
           </>
         );
       },
@@ -286,13 +307,12 @@ console.log("MasterCard",MasterCard)
       cell: (info: any) => {
         return (
           <>
-            <p className="text-sm font-normal uppercase text-navy-700 dark:text-white">
+            {/* <p className="text-sm font-bold uppercase text-navy-700 dark:text-white">
 
               {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
                 <ShortTruncateCopy info={info?.getValue()} showCopy={true} />
               )}
-              {/*  <TruncateCopy info={info} slice={13} showCopy={false} /> */}
-            </p>
+            </p> */}
           </>
         );
       },
@@ -309,7 +329,7 @@ console.log("MasterCard",MasterCard)
         //console.log("info",info?.cell?.row?.original,"info22");
         return (
           <>
-            <p className="text-sm font-normal uppercase text-navy-700 dark:text-white">
+            {/* <p className="text-sm font-bold uppercase text-navy-700 dark:text-white">
 
               {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
                 <div
@@ -329,7 +349,7 @@ console.log("MasterCard",MasterCard)
                   ) : (
 
                     <span className="flex items-center ">
-                      <Image
+                      <img
                         style={{ height: "auto", width: "15px" }}
                         className="h-auto w-20"
                         src={getImage(info?.cell?.row?.original?.gateway_name)}
@@ -344,7 +364,7 @@ console.log("MasterCard",MasterCard)
 
                 </div>
               )}
-            </p>
+            </p> */}
           </>
         );
       },
@@ -359,47 +379,18 @@ console.log("MasterCard",MasterCard)
       cell: (info: any) => {
         return (
           <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
-              <p className="text-sm font-normal text-navy-700 dark:text-white">
+            {/* {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
+              <p className="text-sm font-bold text-navy-700 dark:text-white">
                 {info?.cell?.row?.original?.meta_info?.Descriptor
                   ? info?.cell?.row?.original?.meta_info?.Descriptor
                   : "-"}
               </p>
-            )}
+            )} */}
           </>
         );
       },
     }),
-    columnHelper.accessor("id", {
-      id: "id",
-      header: () => (
-        <p className="text-sm font-bold text-gray-900 dark:text-white">
-          CARD TYPE
-        </p>
-      ),
-      cell: (info: any) => {
-        return (
-          <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
-              <p className="text-sm font-normal text-navy-700 dark:text-white">
-                {info?.row?.original?.card_type
-                  ?
-                  <Image
-                  style={{ height: "auto", width: "45px" }}
-                  className="h-auto w-20"
-                  src={getCardSVG(info?.row?.original?.card_type)}
-                  alt="Image"
-                  title={info?.row?.original?.card_type}
-                />
-                  
-                  : '-'
-                }
-              </p>
-            )}
-          </>
-        );
-      },
-    }),
+
     columnHelper.accessor("status", {
       id: "status",
       header: () => (
@@ -411,178 +402,7 @@ console.log("MasterCard",MasterCard)
         // console.log("infio")
         return (
           <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
-              <div className="flex items-center gap-1.5 text-sm font-bold">
-                {/* <StatusRender
-                  status={info?.row?.original?.status}
-                  value={info.getValue()}
-                /> */}
 
-                {/* <PopoverHorizon
-                  extra=""
-                  trigger={
-                    <button onClick={() => {
-                      getStatusHistoryFun(info?.row?.original?.id)
-
-                    }} className="bg-brand-500 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:bg-brand-200 rounded-xl px-5 py-3 text-base font-medium text-white transition duration-200 dark:text-white">
-                      <StatusRender
-                        status={info?.row?.original?.status}
-                        value={info.getValue()}
-                      />
-                    </button>
-                  }
-                  content={
-                    <p>
-                      {
-                        paymentHistoryData?.length > 0 ?
-
-                          paymentHistoryData?.map((hisData: any, index: number) => {
-                            return <>
-                              <Card className="shadow m-2">
-                                <div className="max-w-[50vh] p-3 border-1">
-                                  {index == 0 && <p className="text-black " >
-                                    Created at {hisData?.created_at}  by API call from [{hisData?.client}{"-"}{hisData?.ip}] with status {hisData?.previous_status}
-                                  </p>}
-
-                                  <div className="text-black ">
-                                    {(hisData?.status == "CHARGEBACK" && index != 0) && <div className="">
-
-
-                                      <p>
-                                        Status change from {hisData?.previous_status} to {hisData?.status} at {hisData?.status_changed_date} by {hisData?.client ? `System Api Call ${hisData?.gateway_name}` : `${hisData?.first_name} ${hisData?.last_name}`}
-                                      </p>
-                                      <p>
-                                        ARN Number : {hisData?.arn ?? "-"}
-                                      </p>
-                                      <p>
-                                        Charge Back Reason: {hisData?.reason ?? "-"}
-                                      </p>
-                                    </div>}
-                                    {(hisData?.status != "CHARGEBACK" && index != 0) && <p className="text-black ">
-                                      Status change from {hisData?.previous_status} to {hisData?.status} at {hisData?.status_changed_date} by {hisData?.status} at {hisData?.status_changed_date} by {hisData?.client ? `System Api Call ${hisData?.gateway_name}` : `${hisData?.first_name} ${hisData?.last_name}`}
-                                    </p>}
-                                  </div>
-
-
-
-
-
-                                </div>
-                              </Card>
-                            </>
-                          })
-
-
-                          : "Loading...."
-
-                      }
-                    </p>
-
-                  }
-                /> */}
-
-
-
-
-
-
-
-
-
-
-                {/* {info?.row?.original?.status == "CHARGEBACK" ? */}
-                {true ?
-                  <Popover
-                  //  onOpen={() => {
-                  //   getStatusHistoryFun(info?.row?.original?.id)
-                  // }} onClose={() => {
-                  //   setPaymentHistoryData([])
-                  // }}
-                  >
-                    <PopoverTrigger >
-                      <button className="flex items-center gap-1.5">
-                        <StatusRender
-                          status={info?.row?.original?.status}
-                          value={info.getValue()}
-                        />
-                      </button>
-                    </PopoverTrigger>
-                    <Portal>
-
-                      <PopoverContent borderColor='blue.800' className="z-20 dark:bg-gray-800  invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 p-3 border-1">
-                        <PopoverArrow borderColor='blue.800' className="z-20 dark:bg-gray-800 absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 p-3 border-8" />
-                        <PopoverHeader>
-                          <span className="text-xl text-gray-900 font-bold">Status History</span>
-                        </PopoverHeader>
-
-                        <PopoverBody className="overflow-auto max-h-[50vh]">
-
-
-                          {info?.row?.original?.payment_history?.length > 0 ?
-
-                            info?.row?.original?.payment_history?.map((hisData: any, index: number) => {
-                              return <>
-                                <Card className="shadow m-2">
-                                  <div className="max-w-[55vh] p-3 border-1 ">
-                                    {index == 0 && <p className="text-black text-gray-900" >
-                                      Created at {hisData?.created_at}  by API call from [{hisData?.client}{" - "}{hisData?.ip}] with status {hisData?.status}
-                                    </p>}
-
-                                    <div className="text-black text-gray-900">
-                                      {(hisData?.status == "CHARGEBACK" && index != 0) && <div className="">
-
-
-                                        <p>
-                                          Status change from {hisData?.previous_status} to {hisData?.status} at {hisData?.status_changed_date} by {hisData?.client ? `System Api Call ${hisData?.gateway_name || ""}` : `${hisData?.first_name || ""} ${hisData?.last_name || ""}`}
-                                        </p>
-                                        <p>
-                                          ARN Number : {hisData?.arn || "-"}
-                                        </p>
-                                        <p>
-                                          Charge Back Reason : {hisData?.reason || "-"}
-                                        </p>
-                                      </div>}
-                                      {(hisData?.status != "CHARGEBACK" && index != 0) && <p className="text-black ">
-                                        Status change from {hisData?.previous_status} to {hisData?.status} at {hisData?.status_changed_date}  by {hisData?.client ? `System Api Call ${hisData?.gateway_name || ""}` : `${hisData?.first_name || ""} ${hisData?.last_name || ""}`}
-                                      </p>}
-                                    </div>
-
-
-
-
-
-                                  </div>
-                                </Card>
-                              </>
-                            })
-
-
-                            : <span className="text-gray-900">No history available.</span>}
-
-
-
-
-
-                        </PopoverBody>
-                      </PopoverContent>
-                    </Portal>
-
-                  </Popover> :
-                  <StatusRender
-                    status={info?.row?.original?.status}
-                    value={info.getValue()}
-                  />
-                }
-
-
-
-
-
-
-
-
-              </div>
-            )}
           </>
         );
       },
@@ -595,58 +415,13 @@ console.log("MasterCard",MasterCard)
         </p>
       ),
       cell: (info: any) => {
+
         let enRefund = allGateways.find(gateway => gateway.id === info?.row?.original?.gateway_id);
         console.log("enRefund", enRefund)
         //console.log("infoinfo",info,"fetchPayments",fetchPayments,"enRefund",enRefund);
         return (
           <>
-            {!info.row.getIsExpanded() && !info.row.getIsExpanded() && (
-              <div className="flex items-center">
-                {roleData?.[0]?.payment?.value?.refund_payment_list && (
-                  <RefundModal
-                    info={info.row.original}
-                    fetchPayments={fetchPayments}
-                    enRefund={enRefund?.refund}
-                    transactionID={info.row.original.et_id}
-                  />
-                )}
-                {roleData?.[0]?.payment?.value
-                  ?.view_payment_response_information && (
-                    <InfoModal info={info.row.original} />
-                  )}
-                {/* <ReceiptModal info={info} /> */}
-                <a
-                  href={info.row.original?.receipt_url}
-                  target="_blank"
-                  aria-disabled={!info.row.original?.receipt_url}
-                  className="aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
-                >
-                  {roleData?.[0]?.payment?.value?.view_payment_receipt && (
-                    <BsReceipt className={"h-5 w-5"} />
-                  )}
-                </a>
-
-                {roleData?.[0]?.payment?.value?.refund_payment_list && (
-                  <RetryModal
-                    info={info.row.original}
-                    fetchPayments={fetchPayments}
-                    enRefund={enRefund?.refund}
-                    transactionID={info?.row?.original?.id}
-                  />
-                )}
-
-                {roleData?.[0]?.payment?.value?.edit_payment_status && (
-                  <ChangeStatusModal
-                    info={info.row.original}
-                    fetchPayments={fetchPayments}
-                    enRefund={enRefund?.refund}
-                    transactionID={info?.row?.original?.id}
-                  />)
-                }
-
-                {/* "" === "small" ? "h-4 w-4" :  */}
-              </div>
-            )}
+            --
           </>
         );
       },
@@ -813,7 +588,7 @@ console.log("MasterCard",MasterCard)
                             disabled={info?.row?.original?.status === "false"}
                             title={ele?.id}
                           >
-                            <Image
+                            <img
                               src={ele.image}
                               className="h-8 w-8 object-cover"
                             />
@@ -997,8 +772,9 @@ console.log("MasterCard",MasterCard)
         <div className="lg:flex md:flex block w-full justify-between gap-5">
           <div className="flex items-center gap-5">
             <div className="text-xl font-normal text-navy-700 dark:text-white">
-          <Searchbox onSearch={handleValueChange} />
-             
+              {/* All Payout */}
+            <Searchbox onSearch={handleValueChange} />
+
             </div>
 
           </div>
@@ -1023,11 +799,11 @@ console.log("MasterCard",MasterCard)
 
 
             <button
-              onClick={() => handelOnDownloadCSV()}
+              // onClick={() => handelOnDownloadCSV()}
               disabled={Loading}
-              className="flex w-[159px] my-1 md:my-3 items-center gap-2 rounded-full bg-white      px-3 py-2 text-black hover:bg-indigo-500 hover:text-white border  "
-
               // className="flex w-[155px] my-1 md:my-3 items-center gap-2 rounded-full bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-500"
+              className="flex w-[159px] my-1 md:my-3 items-center gap-2 rounded-full bg-white      px-3 py-2 text-black hover:bg-indigo-500 hover:text-white border  "
+            
             >
               <FaDownload className="w-[14px] " />
               <p>Download CSV</p>
@@ -1080,7 +856,7 @@ console.log("MasterCard",MasterCard)
           <DivLoader className="m-5 h-6 w-6 border-indigo-500" />
         ) : (
           <table className="w-full w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr
                   key={headerGroup.id}

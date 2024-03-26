@@ -15,6 +15,14 @@ import Scipiopay from "assets/img/payment-clients/Scipiopay.png";
 import Betapay from "assets/img/payment-clients/Betapay.png";
 import Aurea_via from "assets/img/payment-clients/Aurea_via.png";
 import Kasha from "assets/img/payment-clients/Kasha.jpg";
+import Visa from "assets/svg/card_type/visa.svg";
+import MasterCard from "assets/svg/card_type/mastercard.svg";
+import Discover from "assets/svg/card_type/discover.svg";
+import Amex from "assets/svg/card_type/amex.svg";
+import MaestroCard from "assets/svg/card_type/maestro.svg";
+import DinersClub from "assets/svg/card_type/dinersclub.svg";
+import JCB from "assets/svg/card_type/jcb.svg";
+import UnionPay from "assets/svg/card_type/unionpay.svg";
 
 
 
@@ -55,5 +63,31 @@ export function getImage(name: string) {
     return Betapay;
   } else if (name === 'Kasha') {
     return Kasha;
+  }
+ else if (name === 'Visa') {
+  return Visa;
+}
+}
+
+
+export function getCardSVG(name:string){
+  switch (name) {
+    case 'VISA':
+      return Visa
+    case 'MasterCard':
+      return MasterCard
+    case 'Discover':
+      return Discover
+    case 'Amex':
+      return Amex
+    case 'MaestroCard':
+      return MaestroCard
+    case 'DinersClub':
+      return DinersClub
+    case 'JCB':
+      return JCB
+    case 'UnionPay':
+      return UnionPay
+    default: return "-"
   }
 }

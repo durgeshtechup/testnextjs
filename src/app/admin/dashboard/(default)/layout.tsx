@@ -349,7 +349,7 @@ const Dashboard = () => {
                 return (
                   <button
                   key={index}
-                    className={`border  rounded-md px-2 py-2 m-1 capitalize outline-none ${timeFrameTop === ele ? "border-blue-500" : "border gray-200"}`}
+                    className={`border  rounded-md px-2 py-2 m-1 capitalize outline-none text-gray-900 ${timeFrameTop === ele ? "border-blue-500" : "border gray-200"}`}
                     onClick={() => { setTimeFrameTop(ele); }}
                   >
                     {ele}

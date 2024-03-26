@@ -13,6 +13,8 @@ import {
   MdToken,
 } from 'react-icons/md';
 import { RxTokens } from "react-icons/rx";
+import { PiHandCoinsDuotone } from "react-icons/pi";
+
 
 // Admin Imports
 
@@ -135,6 +137,16 @@ const routes = [
     layout: '/admin',
     path: '/users',
     icon: <MdPerson className="text-inherit h-5 w-5" />,
+    collapse: false,
+    items:[]
+
+  },
+
+  {
+    name: 'Payout',
+    layout: '/admin',
+    path: '/payout',
+    icon: <PiHandCoinsDuotone className="text-inherit h-5 w-5" />,
     collapse: false,
     items:[]
 

@@ -84,7 +84,7 @@ function PaymentMethodTable(props: {
           >
             <Image
               style={{ height: "auto", width: "50px" }}
-              alt="img"
+              alt={info.getValue()}
               src={
                 info.getValue() === "Pix"
                   ? Pix
@@ -134,7 +134,7 @@ function PaymentMethodTable(props: {
           <p className="text-sm font-bold text-gray-900 dark:text-white">Name</p>
         ),
         cell: (info: any) => (
-          <p className="text-sm font-normal text-navy-700 dark:text-white">
+          <p className="text-sm font-bold text-navy-700 dark:text-white">
             {info.getValue()}
           </p>
         ),
@@ -242,6 +242,23 @@ function PaymentMethodTable(props: {
         </div>
       ),
     }),
+    columnHelper.accessor("token", {
+      id: "token",
+      header: () => (
+        <p className="flex justify-center text-sm font-bold text-gray-900 dark:text-white">
+          Token
+        </p>
+      ),
+      cell: (info: any) => (
+        <div className="flex justify-center text-sm font-bold text-navy-700 dark:text-white">
+          {info.getValue() ? (
+            <MdCheckCircle className="h-5 w-5 text-teal-500" />
+          ) : (
+            <MdCancel className="h-5 w-5 text-red-500" />
+          )}
+        </div>
+      ),
+    }),
     columnHelper.accessor("payout", {
       id: "payout",
       header: () => (
@@ -259,11 +276,11 @@ function PaymentMethodTable(props: {
         </div>
       ),
     }),
-    columnHelper.accessor("direct_debit", {
-      id: "direct_debit",
+    columnHelper.accessor("payin", {
+      id: "payin",
       header: () => (
         <p className="flex justify-center text-sm font-bold text-gray-900 dark:text-white">
-          Direct Debit
+          Payin
         </p>
       ),
       cell: (info: any) => (
@@ -276,6 +293,23 @@ function PaymentMethodTable(props: {
         </div>
       ),
     }),
+    // columnHelper.accessor("direct_debit", {
+    //   id: "direct_debit",
+    //   header: () => (
+    //     <p className="flex justify-center text-sm font-bold text-gray-900 dark:text-white">
+    //       Direct Debit
+    //     </p>
+    //   ),
+    //   cell: (info: any) => (
+    //     <div className="flex justify-center text-sm font-bold text-navy-700 dark:text-white">
+    //       {info.getValue() ? (
+    //         <MdCheckCircle className="h-5 w-5 text-teal-500" />
+    //       ) : (
+    //         <MdCancel className="h-5 w-5 text-red-500" />
+    //       )}
+    //     </div>
+    //   ),
+    // }),
     columnHelper.accessor("is_active", {
       id: "is_active",
       header: () => (
@@ -331,8 +365,8 @@ function PaymentMethodTable(props: {
             style={{ height: "50px" }}
           >
             <Image
-            alt="img"
               style={{ height: "auto", width: "50px" }}
+              alt={info.getValue()}
               src={
                 info.getValue() === "Pix"
                   ? Pix
@@ -380,7 +414,7 @@ function PaymentMethodTable(props: {
         <p className="text-sm font-bold text-gray-900 dark:text-white">Name</p>
       ),
       cell: (info: any) => (
-        <p className="text-sm font-normal text-navy-700 dark:text-white">
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
           {info.getValue()}
         </p>
       ),
@@ -485,6 +519,23 @@ function PaymentMethodTable(props: {
         </div>
       ),
     }),
+    columnHelper.accessor("token", {
+      id: "token",
+      header: () => (
+        <p className="flex justify-center text-sm font-bold text-gray-900 dark:text-white">
+          Token
+        </p>
+      ),
+      cell: (info: any) => (
+        <div className="flex justify-center text-sm font-bold text-navy-700 dark:text-white">
+          {info.getValue() ? (
+            <MdCheckCircle className="h-5 w-5 text-teal-500" />
+          ) : (
+            <MdCancel className="h-5 w-5 text-red-500" />
+          )}
+        </div>
+      ),
+    }),
     columnHelper.accessor("payout", {
       id: "payout",
       header: () => (
@@ -502,11 +553,11 @@ function PaymentMethodTable(props: {
         </div>
       ),
     }),
-    columnHelper.accessor("direct_debit", {
-      id: "direct_debit",
+    columnHelper.accessor("payin", {
+      id: "payin",
       header: () => (
         <p className="flex justify-center text-sm font-bold text-gray-900 dark:text-white">
-          Direct Debit
+          Payin
         </p>
       ),
       cell: (info: any) => (
@@ -519,6 +570,23 @@ function PaymentMethodTable(props: {
         </div>
       ),
     }),
+    // columnHelper.accessor("direct_debit", {
+    //   id: "direct_debit",
+    //   header: () => (
+    //     <p className="flex justify-center text-sm font-bold text-gray-900 dark:text-white">
+    //       Direct Debit
+    //     </p>
+    //   ),
+    //   cell: (info: any) => (
+    //     <div className="flex justify-center text-sm font-bold text-navy-700 dark:text-white">
+    //       {info.getValue() ? (
+    //         <MdCheckCircle className="h-5 w-5 text-teal-500" />
+    //       ) : (
+    //         <MdCancel className="h-5 w-5 text-red-500" />
+    //       )}
+    //     </div>
+    //   ),
+    // }),
     columnHelper.accessor("is_active", {
       id: "is_active",
       header: () => (
@@ -571,11 +639,13 @@ function PaymentMethodTable(props: {
     <Card extra={"w-full h-full sm:overflow-auto px-6 py-4"}>
       {/* <header className="relative flex items-center justify-between pt-5"> */}
       <header className="relative flex items-center justify-between pt-5 flex-wrap">
-        {/* <div className="text-xl font-bold text-navy-700 dark:text-white">
-          All Gateways
-        </div> */}
-        {/* <CardMenu /> */}
+        <div className="text-xl font-normal text-navy-700 dark:text-white">
+          {/* Payment Method */}
         <Searchbox onSearch={handleValueChange} />
+
+          {/* All Gateways */}
+        </div>
+        {/* <CardMenu /> */}
       </header>
 
       <div className="mt-4 overflow-x-auto scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-full scrollbar-thumb-rounded-xl scrollbar-h-1.5 relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -583,7 +653,7 @@ function PaymentMethodTable(props: {
           <DivLoader className="m-5 h-6 w-6 border-indigo-500" />
         ) : (
           <table className="w-full w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
               {table.getHeaderGroups().map((headerGroup: any) => (
                 <tr
                   key={headerGroup.id}

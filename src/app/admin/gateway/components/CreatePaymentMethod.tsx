@@ -38,6 +38,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       business_name: "",
       app_id: "",
@@ -56,6 +58,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       secret_key: "",
       statement_descriptor: "",
@@ -70,6 +74,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       business_name: "",
       subscription_key: "",
@@ -83,6 +89,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       business_name: "",
       password: "",
@@ -97,6 +105,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       authorization_name: "",
       base_url: "",
@@ -114,6 +124,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -127,6 +139,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -139,6 +153,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -151,6 +167,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -158,12 +176,16 @@ const CreatePaymentMethoddModal = ({
       name: "",
       merchantId_test: "",
       passcode_test: "",
+      hash_key_test: "",
+
       payments: false,
       authorization: false,
       subscription: false,
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -177,6 +199,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -193,6 +217,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -206,6 +232,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -220,6 +248,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -234,6 +264,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -247,6 +279,8 @@ const CreatePaymentMethoddModal = ({
       payout: false,
       refund: false,
       direct_debit: false,
+      payin: false,
+      token: false,
       is_active: false,
       timezone: "",
     },
@@ -310,6 +344,8 @@ const CreatePaymentMethoddModal = ({
             refund: data?.refund,
             apm: data?.apm,
             direct_debit: data?.direct_debit,
+            payin: data?.payin,
+            token: data?.token,
             is_active: data?.is_active,
             timezone: data?.timezone,
             id: data?.id,
@@ -327,6 +363,8 @@ const CreatePaymentMethoddModal = ({
               refund: data?.refund,
               apm: data?.apm,
               direct_debit: data?.direct_debit,
+              payin: data?.payin,
+              token: data?.token,
               is_active: data?.is_active,
               timezone: data?.timezone,
               id: data?.id,
@@ -346,6 +384,8 @@ const CreatePaymentMethoddModal = ({
                 apm: data?.apm,
 
                 direct_debit: data?.direct_debit,
+                payin: data?.payin,
+                token: data?.token,
                 is_active: data?.is_active,
                 timezone: data?.timezone,
                 id: data?.id,
@@ -365,6 +405,8 @@ const CreatePaymentMethoddModal = ({
                   apm: data?.apm,
 
                   direct_debit: data?.direct_debit,
+                  payin: data?.payin,
+                  token: data?.token,
                   is_active: data?.is_active,
                   timezone: data?.timezone,
                   id: data?.id,
@@ -385,6 +427,8 @@ const CreatePaymentMethoddModal = ({
                     apm: data?.apm,
 
                     direct_debit: data?.direct_debit,
+                    payin: data?.payin,
+                    token: data?.token,
                     is_active: data?.is_active,
                     timezone: data?.timezone,
                     id: data?.id,
@@ -411,6 +455,8 @@ const CreatePaymentMethoddModal = ({
                       apm: data?.apm,
 
                       direct_debit: data?.direct_debit,
+                      payin: data?.payin,
+                      token: data?.token,
                       is_active: data?.is_active,
                       timezone: data?.timezone,
                       id: data?.id,
@@ -430,6 +476,8 @@ const CreatePaymentMethoddModal = ({
                         apm: data?.apm,
 
                         direct_debit: data?.direct_debit,
+                        payin: data?.payin,
+                        token: data?.token,
                         access_key_test: data?.meta_info?.access_key_test,
                         secret_key_test: data?.meta_info?.secret_key_test,
                       }
@@ -448,6 +496,8 @@ const CreatePaymentMethoddModal = ({
                           apm: data?.apm,
 
                           direct_debit: data?.direct_debit,
+                          payin: data?.payin,
+                          token: data?.token,
                           username_test: data?.meta_info?.username_test,
 
                         }
@@ -466,6 +516,8 @@ const CreatePaymentMethoddModal = ({
                             apm: data?.apm,
 
                             direct_debit: data?.direct_debit,
+                            payin: data?.payin,
+                            token: data?.token,
                             apikey_test: data?.meta_info?.apikey_test,
 
                           }
@@ -484,8 +536,12 @@ const CreatePaymentMethoddModal = ({
                               apm: data?.apm,
 
                               direct_debit: data?.direct_debit,
+                              payin: data?.payin,
+                              token: data?.token,
                               merchantId_test: data?.meta_info?.merchantId_test,
                               passcode_test: data?.meta_info?.passcode_test,
+                              hash_key_test: data?.meta_info?.hash_key_test,
+
 
                             }
                             : data?.name === "Re-set"
@@ -503,6 +559,8 @@ const CreatePaymentMethoddModal = ({
                                 apm: data?.apm,
 
                                 direct_debit: data?.direct_debit,
+                                payin: data?.payin,
+                                token: data?.token,
                                 secretKey_test: data?.meta_info?.secretKey_test,
                                 brand_id_test: data?.meta_info?.brand_id_test,
 
@@ -522,6 +580,8 @@ const CreatePaymentMethoddModal = ({
                                   apm: data?.apm,
 
                                   direct_debit: data?.direct_debit,
+                                  payin: data?.payin,
+                                  token: data?.token,
                                   id_branch_test: data?.meta_info?.id_branch_test,
                                   id_company_test: data?.meta_info?.id_company_test,
                                   merchant_id_test: data?.meta_info?.merchant_id_test,
@@ -543,6 +603,8 @@ const CreatePaymentMethoddModal = ({
                                     apm: data?.apm,
 
                                     direct_debit: data?.direct_debit,
+                                    payin: data?.payin,
+                                    token: data?.token,
                                     shop_id_test: data?.meta_info?.shop_id_test,
                                     shop_secret_key_test: data?.meta_info?.shop_secret_key_test,
                                   }
@@ -561,6 +623,8 @@ const CreatePaymentMethoddModal = ({
                                       apm: data?.apm,
 
                                       direct_debit: data?.direct_debit,
+                                      payin: data?.payin,
+                                      token: data?.token,
                                       companyNum_test: data?.meta_info?.companyNum_test,
                                       personalHashkey_test: data?.meta_info?.personalHashkey_test,
                                     }
@@ -579,6 +643,8 @@ const CreatePaymentMethoddModal = ({
                                         apm: data?.apm,
 
                                         direct_debit: data?.direct_debit,
+                                        payin: data?.payin,
+                                        token: data?.token,
                                         api_token_test: data?.meta_info?.api_token_test,
                                         merchant_id_test: data?.meta_info?.merchant_id_test,
                                         terminal_id_test: data?.meta_info?.terminal_id_test,
@@ -598,6 +664,8 @@ const CreatePaymentMethoddModal = ({
                                           apm: data?.apm,
 
                                           direct_debit: data?.direct_debit,
+                                          payin: data?.payin,
+                                          token: data?.token,
                                           api_key_test: data?.meta_info?.api_key_test,
                                           merchant_domain_test: data?.meta_info?.merchant_domain_test,
                                         }
@@ -612,6 +680,8 @@ const CreatePaymentMethoddModal = ({
                                           apm: data?.apm,
 
                                           direct_debit: data?.direct_debit,
+                                          payin: data?.payin,
+                                          token: data?.token,
                                           is_active: data?.is_active,
                                           timezone: data?.timezone,
                                           id: data?.id,
@@ -766,6 +836,8 @@ const CreatePaymentMethoddModal = ({
           refund: formValues.refund,
           apm: formValues.apm,
           direct_debit: formValues.direct_debit,
+          payin: formValues?.payin,
+          token: formValues?.token,
           is_active: formValues?.is_active,
           timezone: formValues?.timezone,
           card_types: checkedCards?.map((item: any) => item?.value),
@@ -807,6 +879,7 @@ const CreatePaymentMethoddModal = ({
             shop_secret_key_test: formValues?.shop_secret_key_test,
             companyNum_test: formValues?.companyNum_test,
             personalHashkey_test: formValues?.personalHashkey_test,
+            hash_key_test: formValues?.hash_key_test,
             api_token_test: formValues?.api_token_test,
             // merchant_id_test: formValues?.merchant_id_test,
             terminal_id_test: formValues?.terminal_id_test,
@@ -874,7 +947,7 @@ const CreatePaymentMethoddModal = ({
           //   </Card>
           null}
       </div>
-      <Modal clasSName="" isOpen={isOpen} onClose={() => { }}>
+      <Modal isOpen={isOpen} onClose={() => { }}>
         <ModalOverlay className="bg-[#000] !opacity-30" />
 
         {/* <ModalContent className="!z-[1002] !m-auto !w-max md:min-w-[800px] !max-w-[85%] md:top-[12vh]"> */}
@@ -884,7 +957,7 @@ const CreatePaymentMethoddModal = ({
 
             <Card extra=" max-w-[800px]  flex flex-col !z-[1004]"> */}
 
-        <ModalContent className="z-[1002]  !m-auto   sm:my-8 sm:w-full max-w-[800px] sm:max-w-xxl flex justify-start  min-h-[85vh] max-h-[100vh] overflow-auto scrollbarhide ">
+        <ModalContent className="z-[1002] !m-auto   sm:my-8 sm:w-full max-w-[800px] sm:max-w-xxl flex justify-start  min-h-[85vh] max-h-[100vh] overflow-auto scrollbarhide ">
           <ModalBody className="py-2">
 
             <Card extra=" max-w-[800px]  flex flex-col !z-[1004] ">
@@ -962,10 +1035,9 @@ const CreatePaymentMethoddModal = ({
                       className="mt-1 flex h-10 w-full items-center justify-center rounded-xl border  bg-white/0 p-2 text-sm text-gray-700 outline-none dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]"
                     >
                       <option value="">Select TimeZone</option>
-                      {timeZone?.map((data: any,index:any) => {
+                      {timeZone?.map((data: any) => {
                         return (
                           <option
-                          key={index}
                             value={data?.label}
                           >{`${data?.label}(${data?.value})`}</option>
                         );
@@ -1088,6 +1160,26 @@ const CreatePaymentMethoddModal = ({
                   <div className=" flex items-center justify-between p-2">
                     <div className="">
                       <p className="mb-1 text-sm font-medium text-navy-700 dark:text-white  ">
+                        Token
+                      </p>
+                      <div className="flex justify-center">
+                        <Checkbox
+                          id="token"
+                          value={!formValues?.token}
+                          disabled={
+                            formValues?.is_active === false ? true : false || formValues?.token == null
+                          }
+                          className={`${formValues?.token == null ? "dark:bg-gray-700 w-5 h-5" : "w-5 h-5"}`}
+                          color={formValues?.is_active === false || formValues?.token == null ? "gray" : ""}
+                          checked={formValues?.token}
+                          onChange={handleValueChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className=" flex items-center justify-between p-2">
+                    <div className="">
+                      <p className="mb-1 text-sm font-medium text-navy-700 dark:text-white  ">
                         Payout
                       </p>
                       <div className="flex justify-center">
@@ -1106,7 +1198,7 @@ const CreatePaymentMethoddModal = ({
                       </div>
                     </div>
                   </div>
-                  <div className=" flex items-center justify-between p-2">
+                  {/* <div className=" flex items-center justify-between p-2">
                     <div className="">
                       <p className="mb-1 text-sm font-medium text-navy-700 dark:text-white  ">
                         Direct Debit
@@ -1125,7 +1217,28 @@ const CreatePaymentMethoddModal = ({
                         />
                       </div>
                     </div>
+                  </div> */}
+                  <div className=" flex items-center justify-between p-2">
+                    <div className="">
+                      <p className="mb-1 text-sm font-medium text-navy-700 dark:text-white  ">
+                        Payin
+                      </p>
+                      <div className="flex justify-center">
+                        <Checkbox
+                          id="payin"
+                          value={!formValues?.payin}
+                          disabled={
+                            formValues?.is_active === false ? true : false || formValues?.payin == null
+                          }
+                          className={`${formValues?.payin == null ? "dark:bg-gray-700 w-5 h-5" : "w-5 h-5"}`}
+                          color={formValues?.is_active === false || formValues?.payin == null ? "gray" : ""}
+                          checked={formValues?.payin}
+                          onChange={handleValueChange}
+                        />
+                      </div>
+                    </div>
                   </div>
+
                 </div>
 
                 <div className="h-4 w-full">
@@ -1627,6 +1740,20 @@ const CreatePaymentMethoddModal = ({
                           state={formValuesErr?.passcode_test ? "error" : ""}
                           onChange={handleValueChange}
                         />
+                        <InputField
+                          disabled={
+                            formValues?.is_active === false ? true : false
+                          }
+                          variant="auth"
+                          extra="mb-1"
+                          label="Hash Key Test*"
+                          placeholder="Hash key test"
+                          id="hash_key_test"
+                          type="text"
+                          value={formValues?.hash_key_test ?? ""}
+                          state={formValuesErr?.hash_key_test ? "error" : ""}
+                          onChange={handleValueChange}
+                        />
 
                       </>
                     )}
@@ -1801,6 +1928,9 @@ const CreatePaymentMethoddModal = ({
                           state={formValuesErr?.personalHashkey_test ? "error" : ""}
                           onChange={handleValueChange}
                         />
+
+
+
 
 
                       </>
