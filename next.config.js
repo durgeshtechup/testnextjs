@@ -26,10 +26,11 @@ const nextConfig = {
   //   appDir: true,
   // },
   env: {
-    REACT_APP_API_BASE_URL: 'https://backend-dev.bm2bank.com',
+    // REACT_APP_API_BASE_URL: 'https://backend-dev.bm2bank.com',
     // REACT_APP_API_BASE_URL: 'https://backend.bm2bank.com',
     // REACT_APP_API_BASE_URL: 'https://backend-dev.lightningchecks.com',
     // REACT_APP_API_BASE_URL: 'https://backend.lightningchecks.com',
+    REACT_APP_API_BASE_URL:"https://backend-dev.bm2pay.com"
     // NETLIFY_NEXT_PLUGIN_SKIP:true
   },
   typescript: {
